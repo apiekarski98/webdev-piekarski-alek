@@ -12,7 +12,9 @@ module.exports = function(app)
   var connectionString = 'mongodb://webappmaker:webappmaker@ds163181.mlab.com:63181/webappmaker';
 
   var mongoose = require("mongoose");
-    mongoose.connect(connectionString);
+    mongoose.connect(connectionString, {
+	useMongoClient: true
+    });
 
     var TestSchema = mongoose.Schema({
         message: String
