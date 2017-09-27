@@ -1,10 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <script src="../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <title>Website List</title>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Websites</b>
+      </a>
+    </p>
+
+    <!--plus sign-->
+    <p class="navbar-text pull-right">
+      <a href="website-new.html" class="navbar-link">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+<div class="container-fluid">
+  <h1>Website List</h1>
+  <ul class="list-group">
+    <li class="list-group-item active">
+      Name
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9 col-sm-6 col-md-3">
+          <a href="../page/page-list.html">Facebook</a>
+        </div>
+        <div class="col-xs-3 hidden-xs hidden-sm">01/01/01</div>
+        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Mark</div>
+        <div class="col-xs-3">
+          <a class="pull-right" href="website-edit.html">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9 col-sm-6 col-md-3">
+          <a href="../page/page-list.html">Twitter</a>
+        </div>
+        <div class="col-xs-3 hidden-xs hidden-sm">02/02/02</div>
+        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">James</div>
+        <div class="col-xs-3">
+          <a class="pull-right" href="website-edit.html">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9 col-sm-6 col-md-3">
+          <a href="../page/page-list.html">Reddit</a>
+        </div>
+        <div class="col-xs-3 hidden-xs hidden-sm">03/03/03</div>
+        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Alek</div>
+        <div class="col-xs-3">
+          <a class="pull-right" href="website-edit.html">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a href="profile.html">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
 
 </body>
 </html>
