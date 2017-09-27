@@ -2,4 +2,4 @@ My name is Alek Piekarski. I am a third year undergraduate student at Northeaste
 
 This repository is specifically for the web development class (CS5610).
 
-The link to the root to the hosted environment on Heroku is @ds135444.mlab.com:35444/heroku_wm2zwl5b.
+The link to the root to the hosted environment on Heroku is https://webdev-piekarski-alek.herokuapp.com.
