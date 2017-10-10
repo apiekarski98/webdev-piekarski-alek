@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WidgerImageComponent } from './widger-image.component';
+import { WidgerImageComponent } from './widget-image.component';
 
 describe('WidgerImageComponent', () => {
   let component: WidgerImageComponent;

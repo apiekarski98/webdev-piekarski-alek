@@ -5,7 +5,7 @@
       <!--Back arrow-->
       <div class="col-xs-1">
         <p class="navbar-text pull-left">
-          <a href="widget-list.html" class="navbar-link">
+          <a [routerLink]="['/widget-list']" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
@@ -22,7 +22,7 @@
       <!--Check mark-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a href="widget-list.html" class="navbar-link">
+          <a [routerLink]="['/widget-list']" class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
           </a>
         </p>
@@ -82,7 +82,7 @@
   </form>
 
   <a class="btn btn-danger btn-block"
-     href="widget-list.html">
+     [routerLink]="['/widget-list']">
     Delete
   </a>
 </div>
@@ -92,7 +92,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/profile']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

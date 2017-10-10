@@ -5,7 +5,7 @@
       <!--Back arrow-->
       <div class="col-xs-1">
         <p class="navbar-text pull-left">
-          <a href="website-list.html" class="navbar-link">
+          <a [routerLink]="['/website-list']" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
@@ -21,7 +21,7 @@
 
       <div class="col-md-1 hidden-xs hidden-xs">
         <p class="navbar-text">
-          <a href="website-new.html" class="navbar-link">
+          <a [routerLink]="['/website-new']" class="navbar-link">
             <span class="glyphicon glyphicon-plus"></span>
           </a>
         </p>
@@ -38,7 +38,7 @@
       <!--Check mark-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a href="website-list.html" class="navbar-link">
+          <a [routerLink]="['/website-list']" class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
           </a>
         </p>
@@ -60,10 +60,10 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-xs-9">
-              <a href="../page/page-list.html">Facebook</a>
+              <a [routerLink]="['/page-list']">Facebook</a>
             </div>
             <div class="col-xs-3">
-              <a class="pull-right" href="website-edit.html">
+              <a class="pull-right" [routerLink]="['/website-edit']">
                 <span class="glyphicon glyphicon-cog"></span>
               </a>
             </div>
@@ -73,10 +73,10 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-xs-9">
-              <a href="../page/page-list.html">Twitter</a>
+              <a [routerLink]="['/page-list']">Twitter</a>
             </div>
             <div class="col-xs-3">
-              <a class="pull-right" href="website-edit.html">
+              <a class="pull-right" [routerLink]="['/website-edit']">
                 <span class="glyphicon glyphicon-cog"></span>
               </a>
             </div>
@@ -86,10 +86,10 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-xs-9">
-              <a href="../page/page-list.html">Reddit</a>
+              <a [routerLink]="['/page-list']">Reddit</a>
             </div>
             <div class="col-xs-3">
-              <a class="pull-right" href="website-edit.html">
+              <a class="pull-right" [routerLink]="['/website-edit']">
                 <span class="glyphicon glyphicon-cog"></span>
               </a>
             </div>
@@ -122,7 +122,7 @@
         </div>
       </form>
       <a class="btn btn-danger btn-block"
-         href="website-list.html">
+         [routerLink]="['/website-list']">
         Delete
       </a>
     </div>
@@ -132,7 +132,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/profile']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

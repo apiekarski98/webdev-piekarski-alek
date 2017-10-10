@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-1">
         <p class="navbar-text pull-left">
-          <a href="../website/website-list.html" class="navbar-link">
+          <a [routerLink]="['/website-list']" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
@@ -20,7 +20,7 @@
       <!--plus sign-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a href="page-new.html" class="navbar-link">
+          <a [routerLink]="['/page-new']" class="navbar-link">
             <span class="glyphicon glyphicon-plus"></span>
           </a>
         </p>
@@ -37,12 +37,12 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9 col-sm-6 col-md-3">
-          <a href="../widget/widget-list.html">Home Feed</a>
+          <a [routerLink]="['/widget-list']">Home Feed</a>
         </div>
         <div class="col-xs-3 hidden-xs hidden-sm">01/01/01</div>
         <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Mark</div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/page-edit']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -51,12 +51,12 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9 col-sm-6 col-md-3">
-          <a href="../widget/widget-list.html">Profile</a>
+          <a [routerLink]="['/widget-list']">Profile</a>
         </div>
         <div class="col-xs-3 hidden-xs hidden-sm">02/02/02</div>
         <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">James</div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/page-edit']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -65,12 +65,12 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9 col-sm-6 col-md-3">
-          <a href="../widget/widget-list.html">Friends</a>
+          <a [routerLink]="['/widget-list']">Friends</a>
         </div>
         <div class="col-xs-3 hidden-xs hidden-sm">03/03/03</div>
         <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Alek</div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/page-edit']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -79,12 +79,12 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9 col-sm-6 col-md-3">
-          <a href="../widget/widget-list.html">Account</a>
+          <a [routerLink]="['/widget-list']">Account</a>
         </div>
         <div class="col-xs-3 hidden-xs hidden-sm">04/04/04</div>
         <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Alek</div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/page-edit']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -93,12 +93,12 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9 col-sm-6 col-md-3">
-          <a href="../widget/widget-list.html">Settings</a>
+          <a [routerLink]="['/widget-list']">Settings</a>
         </div>
         <div class="col-xs-3 hidden-xs hidden-sm">05/05/05</div>
         <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Alek</div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/page-edit']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -110,7 +110,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/profile']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

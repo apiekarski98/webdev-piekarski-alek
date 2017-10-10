@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-widger-image',
-  templateUrl: './widger-image.component.html',
-  styleUrls: ['./widger-image.component.css']
+  templateUrl: './widget-image.component.html',
+  styleUrls: ['./widget-image.component.css']
 })
 export class WidgerImageComponent implements OnInit {
 
