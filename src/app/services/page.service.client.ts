@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class PageService {
   pages: Page[] = [
-    new Page('321', 'Post 1', '456'),
-    new Page('432', 'Post 2', '456'),
-    new Page('543', 'Post 3', '456')
+    new Page('321', 'Post 1', '456', 'Lorem'),
+    new Page('432', 'Post 2', '456', 'Lorem'),
+    new Page('543', 'Post 3', '456', 'Lorem')
   ];
 
   api = {
