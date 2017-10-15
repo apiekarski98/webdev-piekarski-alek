@@ -7,7 +7,8 @@
     </div>
 
     <div class="navbar-text pull-right">
-      <a [routerLink]="['/profile']" class="navbar-link">
+      <a [routerLink]="['/profile']"
+         class="navbar-link">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </div>
@@ -21,7 +22,9 @@
       <label for="username">
         Username
       </label>
-      <input placeholder="apiekarski"
+      <input [(ngModel)]="username"
+             name="username"
+             placeholder="apiekarski"
              type="text"
              id="username"
              class="form-control"/>
@@ -45,7 +48,9 @@
       <label for="first-name">
         First Name
       </label>
-      <input placeholder="Alek"
+      <input [(ngModel)]="firstName"
+             name="firstName"
+             placeholder="Alek"
              type="text"
              id="first-name"
              class="form-control"/>
@@ -57,7 +62,9 @@
       <label for="last-name">
         Last Name
       </label>
-      <input placeholder="Piekarski"
+      <input [(ngModel)]="lastName"
+             name="lastName"
+             placeholder="Piekarski"
              type="text"
              id="last-name"
              class="form-control"/>
