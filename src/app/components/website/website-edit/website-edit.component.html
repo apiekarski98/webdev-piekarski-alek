@@ -104,7 +104,9 @@
           <label for="name">
             Name
           </label>
-          <input placeholder="Facebook"
+          <input [(ngModel)]="name"
+                 name="name"
+                 placeholder="Facebook"
                  type="text"
                  id="name"
                  class="form-control"/>
@@ -114,7 +116,9 @@
       <form>
         <div class="form-group">
           <label>Description</label>
-          <textarea placeholder="Description"
+          <textarea [(ngModel)]="description"
+                    name="description"
+                    placeholder="Description"
                     type="text"
                     id="description"
                     rows="3"
