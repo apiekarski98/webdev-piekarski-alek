@@ -4,10 +4,10 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class UserService {
   users: User[] = [
-    new User('123', 'alice', 'alice'),
-    new User('234', 'bob', 'bob'),
-    new User('345', 'charly', 'charly'),
-    new User('456', 'jannunzi', 'jannunzi')
+    new User('123', 'alice', 'alice', 'Alice', 'Wonder'),
+    new User('234', 'bob', 'bob', 'Bob', 'Marley'),
+    new User('345', 'charly', 'charly', 'Charly', 'Garcia'),
+    new User('456', 'jannunzi', 'jannunzi', 'Jose', 'Annunzi')
   ];
 
   api = {
