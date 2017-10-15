@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { TestComponent } from './components/test/test.component';
-import {HttpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
-import {TestService} from './services/test.service.client';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { TestService } from './services/test.service.client';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -22,7 +22,11 @@ import { WidgetListComponent } from './components/widget/widget-list/widget-list
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
 import { WidgerImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
-import {Routing} from './app.routing';
+import { Routing } from './app.routing';
+import { UserService } from './services/user.service.client';
+import { WebsiteService } from './services/website.service.client';
+import { PageService } from './services/page.service.client';
+import { WidgetService } from './services/widget.service.client';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,13 @@ import {Routing} from './app.routing';
     FormsModule,
     Routing
   ],
-  providers: [ TestService],
+  providers: [
+    TestService,
+    UserService,
+    WebsiteService,
+    PageService,
+    WidgetService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
