@@ -25,7 +25,7 @@ export class UserService {
     return user;
   }
 
-  findUserById(userId: string) {
+  findUserById(userId: String) {
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i]._id === userId) {
         return this.users[i];
