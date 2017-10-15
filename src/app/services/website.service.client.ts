@@ -1,5 +1,7 @@
 import {Website} from '../models/website.model.client';
+import {Injectable} from '@angular/core';
 
+@Injectable()
 export class WebsiteService {
   websites: Website[] = [
     new Website('123', 'Facebook', '456'),
