@@ -58,7 +58,7 @@ export class UserService {
   deleteUser(userId: String) {
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i]._id === userId) {
-        this.users.splice(i, 1);
+        return this.users.splice(i, 1);
       }
     }
   }
