@@ -38,13 +38,25 @@
         <span class="glyphicon glyphicon-cog"></span>
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </div>
-      <h1>Id: {{widget._id}}</h1>
-      <h2>Type: {{widget.widgetType}}</h2>
-      <h3>Page Id: {{widget.pageId}}</h3>
+      <div [ngSwitch]="widget.type">
+        <div *ngSwitchCase="HEADING">
+          <p>{{widget.text}}</p>
+        </div>
+        <div *ngSwitchCase='YOUTUBE'>
+          <iframe [style.width] = "widget.width"
+                  [src]="widget.url | safe"
+                  frameborder="0"
+                  allowfullscreen></iframe>
+        </div>
+        <div *ngSwitchCase='IMAGE'>
+          <img [style.width] = "widget.width"
+               [src]="widget.url"/>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<br /><br /><br /><br />
+<br/><br/><br/><br/>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
