@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
     const user: User = this.userService.findUserByCredentials(this.username, this.password);
     if (user) {
       this.router.navigate(['/profile', user._id]);
+    } else {
+      this.errorFlag = true;
     }
   }
 
