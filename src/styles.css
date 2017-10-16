@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+input {
+  margin-bottom: 5px;
+}
+
+/*
+Used for space in between the navbar and the container-fluid.
+ */
+.top-margin {
+  margin-top: 70px;
+}
+
+/*
+
+ */
+.ap-toolbar {
+  position: absolute;
+  right: 0px;
+  background-color: darkgray;
+  padding: 10px;
+  border-bottom-left-radius: 5px;
+  opacity: 0.5;
+}
