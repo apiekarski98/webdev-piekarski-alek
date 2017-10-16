@@ -11,7 +11,7 @@ import {PageEditComponent} from './components/page/page-edit/page-edit.component
 import {PageNewComponent} from './components/page/page-new/page-new.component';
 import {WidgetListComponent} from './components/widget/widget-list/widget-list.component';
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
-import {WidgerImageComponent} from './components/widget/widget-edit/widget-image/widget-image.component';
+import {WidgetImageComponent} from './components/widget/widget-edit/widget-image/widget-image.component';
 import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-chooser.component';
 import {WidgetHeaderComponent} from './components/widget/widget-edit/widget-header/widget-header.component';
 import {WidgetYoutubeComponent} from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
