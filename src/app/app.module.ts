@@ -20,7 +20,7 @@ import { WidgetChooserComponent } from './components/widget/widget-chooser/widge
 import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
-import { WidgerImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
+import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 import { Routing } from './app.routing';
 import { UserService } from './services/user.service.client';
@@ -46,7 +46,7 @@ import { WidgetService } from './services/widget.service.client';
     WidgetEditComponent,
     WidgetListComponent,
     WidgetHeaderComponent,
-    WidgerImageComponent,
+    WidgetImageComponent,
     WidgetYoutubeComponent
   ],
   imports: [
