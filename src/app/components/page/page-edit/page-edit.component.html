@@ -52,77 +52,7 @@
   <div class="row">
 
     <div class="col-md-3 hidden-xs hidden-sm">
-      <li class="list-group-item active">
-        Name
-      </li>
-
-      <ul class="list-group">
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-9">
-              <a [routerLink]="['/widget-list']">Home Feed</a>
-            </div>
-            <div class="col-xs-3">
-              <a class="pull-right" [routerLink]="['/page-edit']">
-                <span class="glyphicon glyphicon-cog"></span>
-              </a>
-            </div>
-          </div>
-        </li>
-
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-9">
-              <a [routerLink]="['/widget-list']">Profile</a>
-            </div>
-            <div class="col-xs-3">
-              <a class="pull-right" [routerLink]="['/page-edit']">
-                <span class="glyphicon glyphicon-cog"></span>
-              </a>
-            </div>
-          </div>
-        </li>
-
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-9">
-              <a [routerLink]="['/widget-list']">Friends</a>
-            </div>
-            <div class="col-xs-3">
-              <a class="pull-right" [routerLink]="['/page-edit']">
-                <span class="glyphicon glyphicon-cog"></span>
-              </a>
-            </div>
-          </div>
-        </li>
-
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-9">
-              <a [routerLink]="['/widget-list']">Account</a>
-            </div>
-            <div class="col-xs-3">
-              <a class="pull-right" [routerLink]="['/page-edit']">
-                <span class="glyphicon glyphicon-cog"></span>
-              </a>
-            </div>
-          </div>
-        </li>
-
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-9">
-              <a [routerLink]="['/widget-list']">Settings</a>
-            </div>
-            <div class="col-xs-3">
-              <a class="pull-right" [routerLink]="['/page-edit']">
-                <span class="glyphicon glyphicon-cog"></span>
-              </a>
-            </div>
-          </div>
-        </li>
-
-      </ul>
+      <app-page-list></app-page-list>
     </div>
 
     <div class="col-xs-12 col-md-9">
