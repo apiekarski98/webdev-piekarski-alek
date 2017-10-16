@@ -34,76 +34,22 @@
     Name
   </li>
   <ul class="list-group">
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-3">
-          <a [routerLink]="['/widget-list']">Home Feed</a>
+    <div *ngFor="let page of pages">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-xs-9 col-sm-6 col-md-3">
+            <a [routerLink]="['/widget-list']">{{page.name}}</a>
+          </div>
+          <div class="col-xs-3 hidden-xs hidden-sm">01/01/01</div>
+          <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">{{page.websiteId}}</div>
+          <div class="col-xs-3">
+            <a class="pull-right" [routerLink]="['/page-edit']">
+              <span class="glyphicon glyphicon-cog"></span>
+            </a>
+          </div>
         </div>
-        <div class="col-xs-3 hidden-xs hidden-sm">01/01/01</div>
-        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Mark</div>
-        <div class="col-xs-3">
-          <a class="pull-right" [routerLink]="['/page-edit']">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-3">
-          <a [routerLink]="['/widget-list']">Profile</a>
-        </div>
-        <div class="col-xs-3 hidden-xs hidden-sm">02/02/02</div>
-        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">James</div>
-        <div class="col-xs-3">
-          <a class="pull-right" [routerLink]="['/page-edit']">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-3">
-          <a [routerLink]="['/widget-list']">Friends</a>
-        </div>
-        <div class="col-xs-3 hidden-xs hidden-sm">03/03/03</div>
-        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Alek</div>
-        <div class="col-xs-3">
-          <a class="pull-right" [routerLink]="['/page-edit']">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-3">
-          <a [routerLink]="['/widget-list']">Account</a>
-        </div>
-        <div class="col-xs-3 hidden-xs hidden-sm">04/04/04</div>
-        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Alek</div>
-        <div class="col-xs-3">
-          <a class="pull-right" [routerLink]="['/page-edit']">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-3">
-          <a [routerLink]="['/widget-list']">Settings</a>
-        </div>
-        <div class="col-xs-3 hidden-xs hidden-sm">05/05/05</div>
-        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">Alek</div>
-        <div class="col-xs-3">
-          <a class="pull-right" [routerLink]="['/page-edit']">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </div>
-      </div>
-    </li>
+      </li>
+    </div>
   </ul>
 </div>
 
