@@ -9,7 +9,7 @@ export class WidgetService {
     new Widget('345', 'IMAGE', '321', 0, '100%', 'undefined', 'http://lorempixel.com/400/200/'),
     new Widget('456', 'HTML', '321', 0, 'undefined', '<p>Lorem ipsum</p>', 'undefined'),
     new Widget('567', 'HEADING', '321', 4, 'undefined', 'Lorem ipsum', 'undefined'),
-    new Widget('678', 'YOUTUBE', '321', 0, '100%', 'undefined', 'https://youtu.be/AM2Ivdi9c4E'),
+    new Widget('678', 'YOUTUBE', '321', 0, '100%', 'undefined', 'https://www.youtube.com/embed/AM2Ivdi9c4E'),
     new Widget('789', 'HTML', '321', 0, 'undefined', '<p>Lorem ipsum</p>', 'undefined')
   ];
 
