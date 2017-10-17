@@ -22,7 +22,8 @@
       <!--Check mark-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a [routerLink]="['/widget-list']" class="navbar-link">
+          <a (click)="update(url, width)"
+            [routerLink]="['/widget-list']" class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
           </a>
         </p>
@@ -62,7 +63,8 @@
       <label for="url">
         URL
       </label>
-      <input placeholder="http://lorempixel.com/400/200/sports/1/"
+      <input [(ngModel)]="url"
+             placeholder="http://lorempixel.com/400/200/sports/1/"
              type="url"
              id="url"
              class="form-control"/>
@@ -74,7 +76,8 @@
       <label for="width">
         Width
       </label>
-      <input placeholder="100%"
+      <input [(ngModel)]="width"
+             placeholder="100%"
              type="text"
              id="width"
              class="form-control"/>
@@ -96,7 +99,8 @@
   <div class="btn btn-primary btn-block">
     Upload Image
   </div>
-  <a class="btn btn-danger btn-block"
+  <a (click)="delete()"
+     class="btn btn-danger btn-block"
      [routerLink]="['/widget-list']">
     Delete
   </a>

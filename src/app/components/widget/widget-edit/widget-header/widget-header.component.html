@@ -22,7 +22,9 @@
       <!--Check mark-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a [routerLink]="['/widget-list']" class="navbar-link">
+          <a (click)="update(text, size)"
+             [routerLink]="['/widget-list']"
+             class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
           </a>
         </p>
@@ -50,7 +52,8 @@
       <label for="text">
         Text
       </label>
-      <input placeholder="Saudi Education Officials Fired for Publishing Textbook With Photo of King Faisal Next to Yoda"
+      <input [(ngModel)]="text"
+             placeholder="Saudi Education Officials Fired for Publishing Textbook With Photo of King Faisal Next to Yoda"
              type="text"
              id="text"
              class="form-control"/>
@@ -62,14 +65,16 @@
       <label for="size">
         Size
       </label>
-      <input placeholder="3"
+      <input [(ngModel)]="size"
+             placeholder="3"
              type="number"
              min="0"
              id="size"
              class="form-control"/>
     </div>
   </form>
-  <a class="btn btn-danger btn-block"
+  <a (click)="delete()"
+     class="btn btn-danger btn-block"
      [routerLink]="['/widget-list']">
     Delete
   </a>
