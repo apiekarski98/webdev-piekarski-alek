@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute} from '@angular/router';
+import {Website} from "../../../models/website.model.client";
 
 @Component({
   selector: 'app-website-edit',
@@ -28,6 +29,14 @@ export class WebsiteEditComponent implements OnInit {
     this.website = this.websiteService.findWebsiteById(this.websiteId);
     this.name = this.website['name'];
     this.description = this.website['description'];
+    this.developerId = this.website['developerId'];
   }
 
+  update(name: String, description: String) {
+    this.websiteService.updateWebsite(this.websiteId, new Website(this.websiteId, name, this.developerId, description));
+  }
+
+  delete() {
+    this.websiteService.deleteWebsite(this.websiteId);
+  }
 }

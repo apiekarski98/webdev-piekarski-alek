@@ -38,7 +38,9 @@
       <!--Check mark-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a [routerLink]="['/website-list']" class="navbar-link">
+          <a (click)="update(name, description)"
+             [routerLink]="['/website-list']"
+             class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
           </a>
         </p>
@@ -82,7 +84,8 @@
                     class="form-control">Facebook is a website that allows users to post statuses for their friends to see.</textarea>
         </div>
       </form>
-      <a class="btn btn-danger btn-block"
+      <a (click)="delete()"
+         class="btn btn-danger btn-block"
          [routerLink]="['/website-list']">
         Delete
       </a>
@@ -93,7 +96,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/profile']">
+      <a [routerLink]="['/profile', website.developerId]">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
