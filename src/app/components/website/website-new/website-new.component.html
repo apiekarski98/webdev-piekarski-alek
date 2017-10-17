@@ -38,7 +38,9 @@
       <!--Check mark-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a [routerLink]="['/website-list']" class="navbar-link">
+          <a (click)="create(name, description)"
+             [routerLink]="['/website-list']"
+             class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
           </a>
         </p>
@@ -52,50 +54,7 @@
   <div class="row">
 
     <div class="col-md-3 hidden-xs hidden-sm">
-      <ul class="list-group">
-        <li class="list-group-item active">
-          Name
-        </li>
-
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-9">
-              <a [routerLink]="['/page-list']">Facebook</a>
-            </div>
-            <div class="col-xs-3">
-              <a class="pull-right" [routerLink]="['/website-edit']">
-                <span class="glyphicon glyphicon-cog"></span>
-              </a>
-            </div>
-          </div>
-        </li>
-
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-9">
-              <a [routerLink]="['/page-list']">Twitter</a>
-            </div>
-            <div class="col-xs-3">
-              <a class="pull-right" [routerLink]="['/website-edit']">
-                <span class="glyphicon glyphicon-cog"></span>
-              </a>
-            </div>
-          </div>
-        </li>
-
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-9">
-              <a [routerLink]="['/page-list']">Reddit</a>
-            </div>
-            <div class="col-xs-3">
-              <a class="pull-right" [routerLink]="['/website-edit']">
-                <span class="glyphicon glyphicon-cog"></span>
-              </a>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <app-website-list></app-website-list>
     </div>
 
     <div class="col-xs-12 col-md-9">
@@ -104,7 +63,9 @@
           <label for="name">
             Name
           </label>
-          <input placeholder="Name"
+          <input [(ngModel)]="name"
+                 name="name"
+                 placeholder="Facebook"
                  type="text"
                  id="name"
                  class="form-control"/>
@@ -114,11 +75,13 @@
       <form>
         <div class="form-group">
           <label>Description</label>
-          <textarea placeholder="Description"
+          <textarea [(ngModel)]="description"
+                    name="description"
+                    placeholder="Description"
                     type="text"
                     id="description"
                     rows="3"
-                    class="form-control"></textarea>
+                    class="form-control">Facebook is a website that allows users to post statuses for their friends to see.</textarea>
         </div>
       </form>
     </div>
