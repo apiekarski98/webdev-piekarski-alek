@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser(this.userId, new User(this.userId, username, this.password, firstName, lastName));
   }
 
-  delete(userId: String) {
-    this.userService.deleteUser(userId);
+  delete() {
+    this.userService.deleteUser(this.userId);
   }
 }
