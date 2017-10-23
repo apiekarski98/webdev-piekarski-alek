@@ -9,7 +9,8 @@ import {Widget} from '../../../../models/widget.model.client';
   styleUrls: ['./widget-header.component.css']
 })
 export class WidgetHeaderComponent implements OnInit {
-
+  websiteId: String;
+  userId: String;
   widgetId: String;
   widgetType: String;
   pageId: String;
@@ -26,12 +27,14 @@ export class WidgetHeaderComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.widgetId = params['widgetId'];
+          this.pageId = params['pageId'];
+          this.userId = params['userId'];
+          this.websiteId = params['websiteId'];
         }
       );
 
     this.widget = this.widgetService.findWidgetById(this.widgetId);
     this.widgetType = this.widget['widgetType'];
-    this.pageId = this.widget['pageId'];
     this.text = this.widget['text'];
     this.size = this.widget['size'];
   }
