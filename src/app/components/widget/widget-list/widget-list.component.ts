@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./widget-list.component.css']
 })
 export class WidgetListComponent implements OnInit {
+  userId: String;
+  websiteId: String;
   pageId: String;
   widgets = [{}];
 
@@ -19,6 +21,8 @@ export class WidgetListComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.pageId = params['pageId'];
+          this.userId = params['userId'];
+          this.websiteId = params['websiteId'];
         }
       );
 
