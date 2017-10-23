@@ -2,10 +2,10 @@
   <div class="container-fluid">
     <div class="row">
 
-      <!--plus sign-->
+      <!--back arrow-->
       <div class="col-xs-1">
         <p class="navbar-text pull-left">
-          <a [routerLink]="['/profile', userId]" class="navbar-link">
+          <a [routerLink]="['/user', userId]" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
@@ -22,7 +22,7 @@
       <!--plus sign-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a [routerLink]="['/website-new']" class="navbar-link">
+          <a [routerLink]="['/user', userId, 'website', 'new']" class="navbar-link">
             <span class="glyphicon glyphicon-plus"></span>
           </a>
         </p>
@@ -40,12 +40,12 @@
       <li class="list-group-item">
         <div class="row">
           <div class="col-xs-9 col-sm-6 col-md-3">
-            <a [routerLink]="['/page-list']">{{website.name}}</a>
+            <a [routerLink]="['/user', userId, 'website', website._id, 'page']">{{website.name}}</a>
           </div>
           <div class="col-xs-3 hidden-xs hidden-sm">01/01/01</div>
           <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">{{website.developerId}}</div>
           <div class="col-xs-3">
-            <a class="pull-right" [routerLink]="['/website-edit']">
+            <a class="pull-right" [routerLink]="['/user', userId, 'website', website._id]">
               <span class="glyphicon glyphicon-cog"></span>
             </a>
           </div>
@@ -58,7 +58,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/profile', userId]">
+      <a [routerLink]="['/user', userId]">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
