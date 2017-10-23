@@ -21,7 +21,7 @@ export class WebsiteNewComponent implements OnInit {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.developerId = params['developerId'];
+          this.developerId = params['userId'];
         }
       );
   }
