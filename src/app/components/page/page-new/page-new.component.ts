@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PageService} from "../../../services/page.service.client";
-import {ActivatedRoute} from "@angular/router";
-import {Page} from "../../../models/page.model.client";
+import {PageService} from '../../../services/page.service.client';
+import {ActivatedRoute} from '@angular/router';
+import {Page} from '../../../models/page.model.client';
 
 @Component({
   selector: 'app-page-new',
@@ -9,6 +9,7 @@ import {Page} from "../../../models/page.model.client";
   styleUrls: ['./page-new.component.css']
 })
 export class PageNewComponent implements OnInit {
+  userId: String;
   websiteId: String;
   name: String;
   description: String;
@@ -21,6 +22,7 @@ export class PageNewComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.websiteId = params['websiteId'];
+          this.userId = params['userId'];
         }
       );
   }
