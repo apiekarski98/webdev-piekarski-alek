@@ -5,7 +5,7 @@
       <!--Back arrow-->
       <div class="col-xs-1">
         <p class="navbar-text pull-left">
-          <a [routerLink]="['/website-list']" class="navbar-link">
+          <a [routerLink]="['/user', userId, 'website']" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
@@ -22,7 +22,7 @@
       <!--Check mark-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a [routerLink]="['/widget-list']" class="navbar-link">
+          <a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget']" class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
           </a>
         </p>
@@ -32,16 +32,16 @@
 </nav>
 
 <div class="container top-margin">
-  <ul><a [routerLink]="['/widget-header']"> Header </a></ul>
-  <ul><a [routerLink]="['/widget-image']"> Image </a></ul>
-  <ul><a [routerLink]="['/widget-youtube']"> YouTube </a></ul>
+  <ul><a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', 'header']"> Header </a></ul>
+  <ul><a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', 'image']"> Image </a></ul>
+  <ul><a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', 'youtube']"> YouTube </a></ul>
 </div>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/profile']">
+      <a [routerLink]="['/user', userId]">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
