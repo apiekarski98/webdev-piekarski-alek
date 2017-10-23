@@ -23,13 +23,13 @@ export class WebsiteEditComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.websiteId = params['websiteId'];
+          this.developerId = params['userId'];
         }
       );
 
     this.website = this.websiteService.findWebsiteById(this.websiteId);
     this.name = this.website['name'];
     this.description = this.website['description'];
-    this.developerId = this.website['developerId'];
   }
 
   update(name: String, description: String) {
