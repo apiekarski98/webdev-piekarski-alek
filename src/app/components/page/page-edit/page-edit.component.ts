@@ -14,6 +14,7 @@ export class PageEditComponent implements OnInit {
   name: String;
   websiteId: String;
   description: String;
+  userId: String;
 
   constructor(private pageService: PageService,
               private activatedRoute: ActivatedRoute) { }
@@ -23,6 +24,8 @@ export class PageEditComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.pageId = params['pageId'];
+          this.userId = params['userId'];
+          this.websiteId = params['websiteId'];
         }
       );
 
