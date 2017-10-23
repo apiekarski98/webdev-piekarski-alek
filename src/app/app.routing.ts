@@ -33,6 +33,9 @@ const APP_ROUTES: Routes = [
   {path: 'user/:userId/website/:websiteId/page/:pageId', component: PageEditComponent},
   {path: 'user/:userId/website/:websiteId/page/:pageId/widget', component: WidgetListComponent},
   {path: 'user/:userId/website/:websiteId/page/:pageId/widget/new', component: WidgetChooserComponent},
+  {path: 'user/:userId/website/:websiteId/page/:pageId/widget/image', component: WidgetImageComponent},
+  {path: 'user/:userId/website/:websiteId/page/:pageId/widget/header', component: WidgetHeaderComponent},
+  {path: 'user/:userId/website/:websiteId/page/:pageId/widget/youtube', component: WidgetYoutubeComponent},
   {path: 'user/:userId/website/:websiteId/page/:pageId/widget/widgetId', component: WidgetEditComponent}
 ];
 
