@@ -13,6 +13,7 @@ export class PageNewComponent implements OnInit {
   websiteId: String;
   name: String;
   description: String;
+  pages = [{}];
 
   constructor(private pageService: PageService,
               private activatedRoute: ActivatedRoute) { }
@@ -25,6 +26,7 @@ export class PageNewComponent implements OnInit {
           this.userId = params['userId'];
         }
       );
+    this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
   }
 
   create(name: String, description: String) {
