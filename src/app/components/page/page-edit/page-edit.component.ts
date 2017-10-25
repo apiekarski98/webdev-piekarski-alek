@@ -15,6 +15,7 @@ export class PageEditComponent implements OnInit {
   websiteId: String;
   description: String;
   userId: String;
+  pages = [{}];
 
   constructor(private pageService: PageService,
               private activatedRoute: ActivatedRoute) { }
@@ -33,6 +34,7 @@ export class PageEditComponent implements OnInit {
     this.name = this.page['name'];
     this.description = this.page['description'];
     this.websiteId = this.page['websiteId'];
+    this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
   }
 
   update(name: String, description: String) {
