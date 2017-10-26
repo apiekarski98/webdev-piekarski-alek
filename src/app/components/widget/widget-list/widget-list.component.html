@@ -22,7 +22,8 @@
       <!--plus sign-->
       <div class="col-xs-1">
         <p class="navbar-text pull-right">
-          <a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', 'new']" class="navbar-link">
+          <a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', 'new']"
+             class="navbar-link">
             <span class="glyphicon glyphicon-plus"></span>
           </a>
         </p>
@@ -35,28 +36,32 @@
   <div *ngFor="let widget of widgets">
     <div class="ap-widget">
       <div class="ap-toolbar">
-        <span class="glyphicon glyphicon-cog"></span>
+        <a>
+          <span [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', widget._id]"
+                class="glyphicon glyphicon-cog"></span>
+        </a>
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </div>
-      <div [ngSwitch]="widget.type">
-        <div *ngSwitchCase="HEADING">
+      <div [ngSwitch]="widget.widgetType">
+        <div *ngSwitchCase="'HEADING'">
           <p>{{widget.text}}</p>
         </div>
-        <div *ngSwitchCase='YOUTUBE'>
-          <iframe [style.width] = "widget.width"
+        <div *ngSwitchCase="'YOUTUBE'">
+          <iframe [style.width]="widget.width"
                   [src]="widget.url | safe"
                   frameborder="0"
                   allowfullscreen></iframe>
         </div>
-        <div *ngSwitchCase='IMAGE'>
-          <img [style.width] = "widget.width"
+        <div *ngSwitchCase="'IMAGE'">
+          <img [style.width]="widget.width"
                [src]="widget.url"/>
         </div>
       </div>
     </div>
   </div>
 </div>
-<br/><br/><br/><br/>
+
+<br/><br/><br/><br/><br/><br/><br/><br/>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
