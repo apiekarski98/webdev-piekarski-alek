@@ -20,7 +20,8 @@ export class UserService {
   };
 
   createUser(user: any) {
-    user._id = Math.random();
+    var randomId = Math.floor(Math.random() * 1000000);
+    user._id = randomId.toString();
     this.users.push(user);
     return user;
   }

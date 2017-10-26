@@ -1,5 +1,5 @@
-import { Widget } from '../models/widget.model.client';
-import { Injectable } from '@angular/core';
+import {Widget} from '../models/widget.model.client';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class WidgetService {
@@ -22,7 +22,9 @@ export class WidgetService {
   };
 
   createWidget(pageId: String, widget: any) {
-    widget._id = pageId;
+    widget.pageId = pageId;
+    var randomId = Math.floor(Math.random() * 1000000);
+    widget._id = randomId.toString();
     this.widgets.push(widget);
     return widget;
   }
