@@ -35,12 +35,10 @@ export class WidgetHeaderComponent implements OnInit {
 
     this.widget = this.widgetService.findWidgetById(this.widgetId);
     this.widgetType = this.widget['widgetType'];
-    this.text = this.widget['text'];
-    this.size = this.widget['size'];
   }
 
-  update(text: String, size: Number) {
-    this.widgetService.updateWidget(this.widgetId, new Widget(this.widgetId, 'HEADING', this.pageId, size, 'undefined', text, 'undefined'));
+  update() {
+    this.widgetService.updateWidget(this.widgetId, this.widget);
   }
 
   delete() {

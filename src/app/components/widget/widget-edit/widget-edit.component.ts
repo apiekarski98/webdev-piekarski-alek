@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {WidgetService} from '../../../services/widget.service.client';
+import {ActivatedRoute} from '@angular/router';
+import {WidgetHeaderComponent} from './widget-header/widget-header.component';
+import {WidgetImageComponent} from "./widget-image/widget-image.component";
+import {WidgetYoutubeComponent} from "./widget-youtube/widget-youtube.component";
 
 @Component({
   selector: 'app-widget-edit',
@@ -6,10 +11,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./widget-edit.component.css']
 })
 export class WidgetEditComponent implements OnInit {
+  @ViewChild(WidgetHeaderComponent)
+  private widgetHeaderComponent: WidgetHeaderComponent;
 
-  constructor() { }
+  @ViewChild(WidgetImageComponent)
+  private widgetImageComponent: WidgetImageComponent;
+
+  @ViewChild(WidgetYoutubeComponent)
+  private widgetYoutubeComponent: WidgetYoutubeComponent;
+
+  websiteId: String;
+  userId: String;
+  widgetId: String;
+  widgetType: String;
+  pageId: String;
+  widget: {};
+
+  constructor(private widgetService: WidgetService,
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.activatedRoute.params
+      .subscribe(
+        (params: any) => {
+          this.widgetId = params['widgetId'];
+          this.pageId = params['pageId'];
+          this.userId = params['userId'];
+          this.websiteId = params['websiteId'];
+        }
+      );
+    this.widget = this.widgetService.findWidgetById(this.widgetId);
+    this.widgetType = this.widget['widgetType'];
+  }
+
+  update() {
+    switch (this.widgetType) {
+      case "HEADING":
+        this.widgetHeaderComponent.update();
+        break;
+      case "IMAGE":
+        this.widgetImageComponent.update();
+        break;
+      case "YOUTUBE":
+        this.widgetYoutubeComponent.update();
+        break;
+    }
   }
 
 }

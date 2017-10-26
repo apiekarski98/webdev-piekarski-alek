@@ -14,8 +14,6 @@ export class WidgetImageComponent implements OnInit {
   widgetId: String;
   widgetType: String;
   pageId: String;
-  width: String;
-  url: String;
   widget: {};
 
   constructor(private widgetService: WidgetService,
@@ -35,12 +33,10 @@ export class WidgetImageComponent implements OnInit {
 
     this.widget = this.widgetService.findWidgetById(this.widgetId);
     this.widgetType = this.widget['widgetType'];
-    this.url = this.widget['url'];
-    this.width = this.widget['width'];
   }
 
-  update(url: String, width: String) {
-    this.widgetService.updateWidget(this.widgetId, new Widget(this.widgetId, 'IMAGE', this.pageId, 0, width, 'undefined', url));
+  update() {
+    this.widgetService.updateWidget(this.widgetId, this.widget);
   }
 
   delete() {
