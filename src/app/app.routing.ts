@@ -11,10 +11,7 @@ import {PageEditComponent} from './components/page/page-edit/page-edit.component
 import {PageNewComponent} from './components/page/page-new/page-new.component';
 import {WidgetListComponent} from './components/widget/widget-list/widget-list.component';
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
-import {WidgetImageComponent} from './components/widget/widget-edit/widget-image/widget-image.component';
 import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-chooser.component';
-import {WidgetHeaderComponent} from './components/widget/widget-edit/widget-header/widget-header.component';
-import {WidgetYoutubeComponent} from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 import {HomeComponent} from './components/home/home.component';
 import {TestComponent} from './components/test/test.component';
 
@@ -33,10 +30,7 @@ const APP_ROUTES: Routes = [
   {path: 'user/:userId/website/:websiteId/page/:pageId', component: PageEditComponent},
   {path: 'user/:userId/website/:websiteId/page/:pageId/widget', component: WidgetListComponent},
   {path: 'user/:userId/website/:websiteId/page/:pageId/widget/new', component: WidgetChooserComponent},
-  {path: 'user/:userId/website/:websiteId/page/:pageId/widget/image', component: WidgetImageComponent},
-  {path: 'user/:userId/website/:websiteId/page/:pageId/widget/header', component: WidgetHeaderComponent},
-  {path: 'user/:userId/website/:websiteId/page/:pageId/widget/youtube', component: WidgetYoutubeComponent},
-  {path: 'user/:userId/website/:websiteId/page/:pageId/widget/widgetId', component: WidgetEditComponent}
+  {path: 'user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', component: WidgetEditComponent}
 ];
 
 export const Routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
