@@ -32,9 +32,9 @@
 </nav>
 
 <div class="container top-margin">
-  <ul><a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', 'header']"> Header </a></ul>
-  <ul><a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', 'image']"> Image </a></ul>
-  <ul><a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', 'youtube']"> YouTube </a></ul>
+  <ul><a (click)="create('HEADING')"> Header </a></ul>
+  <ul><a (click)="create('IMAGE')"> Image </a></ul>
+  <ul><a (click)="create('YOUTUBE')"> YouTube </a></ul>
 </div>
 
 
