@@ -1,13 +1,9 @@
-/**
- * Created by sesha on 6/2/17.
- */
-
 // Get the dependencies
 
-const express = require('express');
+var express = require('express');
 const path = require('path');
 const http = require('http');
-const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 const app = express();
 
 app.use(bodyParser.json());
@@ -52,4 +48,5 @@ app.get('*', function (req, res) {
 
 server.listen( port , () => console.log('Running'));
 
-
+require("./assignment/app.js")(app);
+app.listen(port, ipaddress);
