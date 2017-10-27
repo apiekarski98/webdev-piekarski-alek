@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core';
 import {Http} from "@angular/http";
 import "rxjs/Rx";
 import {Response} from "@angular/http";
-import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class WebsiteService {
