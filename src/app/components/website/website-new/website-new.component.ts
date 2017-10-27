@@ -25,9 +25,12 @@ export class WebsiteNewComponent implements OnInit {
           this.developerId = params['userId'];
         }
       );
-    this.websites = this.websiteService.findWebsitesByUser(this.developerId);
+    this.websiteService.findWebsitesByUser(this.developerId);
   }
   create(name: String, description: String) {
-    this.websiteService.createWebsite(this.developerId, new Website('', name, this.developerId, description));
+    const website: Website = new Website('', name, this.developerId, description);
+    this.websiteService.createWebsite(this.developerId, website).subscribe((websites) => {
+      this.websites = websites;
+    });
   }
 }

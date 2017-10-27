@@ -28,17 +28,22 @@ export class WebsiteEditComponent implements OnInit {
         }
       );
 
-    this.website = this.websiteService.findWebsiteById(this.websiteId);
+    this.website = this.websiteService.findWebsiteById(this.developerId, this.websiteId);
     this.name = this.website['name'];
     this.description = this.website['description'];
-    this.websites = this.websiteService.findWebsitesByUser(this.developerId);
+    this.websiteService.findWebsitesByUser(this.developerId);
   }
 
   update(name: String, description: String) {
-    this.websiteService.updateWebsite(this.websiteId, new Website(this.websiteId, name, this.developerId, description));
+    const website = new Website(this.websiteId, name, this.developerId, description);
+    this.websiteService.updateWebsite(this.developerId, website).subscribe((websites) => {
+      this.websites = websites;
+    });
   }
 
   delete() {
-    this.websiteService.deleteWebsite(this.websiteId);
+    this.websiteService.deleteWebsite(this.developerId, this.websiteId).subscribe((websites) => {
+      this.websites = websites;
+    });
   }
 }
