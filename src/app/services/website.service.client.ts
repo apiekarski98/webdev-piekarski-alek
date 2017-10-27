@@ -1,5 +1,9 @@
 import {Website} from '../models/website.model.client';
 import {Injectable} from '@angular/core';
+import {Http} from "@angular/http";
+import "rxjs/Rx";
+import {Response} from "@angular/http";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class WebsiteService {
@@ -21,46 +25,50 @@ export class WebsiteService {
     'deleteWebsite': this.deleteWebsite
   };
 
-  createWebsite(userId: String, website: any) {
+  constructor(private http: Http) {
+  }
+
+  createWebsite(userId: String, website: Website) {
+    const url = 'http://localhost:3100/api/user/' + userId + '/website';
     var randomId = Math.floor(Math.random() * 1000000);
     website._id = randomId.toString();
     website.developerId = userId;
-    this.websites.push(website);
-    return website;
+    return this.http.post(url, website)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findWebsitesByUser(userId: String) {
-    const websitesByUser = [];
-    for (let i = 0; i < this.websites.length; i++) {
-      if (this.websites[i].developerId === userId) {
-        websitesByUser.push(this.websites[i]);
-      }
-    }
-    return websitesByUser;
+    const url = 'http://localhost:3100/api/user/' + userId + '/website';
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
-  findWebsiteById(websiteId: String) {
-    for (let i = 0; i < this.websites.length; i++) {
-      if (this.websites[i]._id === websiteId) {
-        return this.websites[i];
-      }
-    }
+  findWebsiteById(userId: String, websiteId: String) {
+    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
-  updateWebsite(websiteId: String, website: any) {
-    for (let i = 0; i < this.websites.length; i++) {
-      if (this.websites[i]._id === websiteId) {
-        this.websites[i] = website;
-      }
-    }
+  updateWebsite(userId: String, website: Website) {
+    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + website._id;
+    return this.http.put(url, website)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
-  deleteWebsite(websiteId: String) {
-    for (let i = 0; i < this.websites.length; i++) {
-      if (this.websites[i]._id === websiteId) {
-        return this.websites.splice(i, 1);
-      }
-    }
+  deleteWebsite(userId: String, websiteId: String) {
+    const url = 'http://localhost:3100/api/user/' + userId + '/website/' + websiteId;
+    return this.http.delete(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
 }
