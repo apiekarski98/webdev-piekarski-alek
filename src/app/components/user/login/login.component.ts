@@ -22,18 +22,19 @@ export class LoginComponent implements OnInit {
               private router: Router) {
   }
 
-  login() {
-    this.username = this.loginForm.value.username;
-    this.password = this.loginForm.value.password;
-    const user: User = this.userService.findUserByCredentials(this.username, this.password);
-    if (user) {
-      this.router.navigate(['/profile', user._id]);
-    } else {
-      this.errorFlag = true;
-    }
+  ngOnInit() {
   }
 
-  ngOnInit() {
+  login(username: String, password: String) {
+    this.userService
+      .findUserByCredentials(username, password)
+      .subscribe((user: User) => {
+        if (user) {
+          this.router.navigate(['/profile', user._id]);
+        } else {
+          this.errorFlag = true;
+        }
+      });
   }
 
 }
