@@ -34,15 +34,20 @@ export class PageEditComponent implements OnInit {
     this.name = this.page['name'];
     this.description = this.page['description'];
     this.websiteId = this.page['websiteId'];
-    this.pages = this.pageService.findPagesByWebsiteId(this.websiteId);
+    this.pageService.findPagesByWebsiteId(this.websiteId);
   }
 
   update(name: String, description: String) {
-    this.pageService.updatePage(this.pageId, new Page(this.pageId, name, this.websiteId, description));
+    const page = new Page(this.pageId, name, this.websiteId, description);
+    this.pageService.updatePage(this.pageId, page).subscribe((pages) => {
+      this.pages = pages;
+    });
   }
 
   delete() {
-    this.pageService.deletePage(this.pageId);
+    this.pageService.deletePage(this.pageId).subscribe((pages) => {
+      this.pages = pages;
+    });
   }
 
 }
