@@ -14,7 +14,8 @@ export class WidgetImageComponent implements OnInit {
   widgetId: String;
   widgetType: String;
   pageId: String;
-  widget: {};
+  widget: Widget;
+  widgets: [{}];
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute) {
@@ -31,16 +32,20 @@ export class WidgetImageComponent implements OnInit {
         }
       );
 
-    this.widget = this.widgetService.findWidgetById(this.widgetId);
+    this.widgetService.findWidgetById(this.widgetId);
     this.widgetType = this.widget['widgetType'];
   }
 
   update() {
-    this.widgetService.updateWidget(this.widgetId, this.widget);
+    this.widgetService.updateWidget(this.widgetId, this.widget).subscribe((widgets) => {
+      this.widgets = widgets;
+    });
   }
 
   delete() {
-    this.widgetService.deleteWidget(this.widgetId);
+    this.widgetService.deleteWidget(this.pageId, this.widgetId).subscribe((widgets) => {
+      this.widgets = widgets;
+    });
   }
 
 }

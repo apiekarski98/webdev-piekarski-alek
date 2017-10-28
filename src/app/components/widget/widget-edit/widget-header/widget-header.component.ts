@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute} from '@angular/router';
 import {Widget} from '../../../../models/widget.model.client';
@@ -16,7 +16,8 @@ export class WidgetHeaderComponent implements OnInit {
   pageId: String;
   size: Number;
   text: String;
-  widget: {};
+  widget: Widget;
+  widgets = [{}];
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute) {
@@ -33,15 +34,19 @@ export class WidgetHeaderComponent implements OnInit {
         }
       );
 
-    this.widget = this.widgetService.findWidgetById(this.widgetId);
+    this.widgetService.findWidgetById(this.widgetId);
     this.widgetType = this.widget['widgetType'];
   }
 
   update() {
-    this.widgetService.updateWidget(this.widgetId, this.widget);
+    this.widgetService.updateWidget(this.widgetId, this.widget).subscribe((widgets) => {
+      this.widgets = widgets;
+    });
   }
 
   delete() {
-    this.widgetService.deleteWidget(this.widgetId);
+    this.widgetService.deleteWidget(this.pageId, this.widgetId).subscribe((widgets) => {
+      this.widgets = widgets;
+    });
   }
 }

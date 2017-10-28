@@ -12,6 +12,7 @@ export class WidgetChooserComponent implements OnInit {
   pageId: String;
   userId: String;
   websiteId: String;
+  widgets = [{}];
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
@@ -30,7 +31,10 @@ export class WidgetChooserComponent implements OnInit {
   }
 
   create(widgetType: String) {
-    var widget = this.widgetService.createWidget(this.pageId, new Widget("", widgetType, this.pageId, 0, "", "", ""));
+    const widget: Widget = new Widget("", widgetType, this.pageId, 0, "", "", "");
+    this.widgetService.createWidget(this.pageId, widget).subscribe((widgets) => {
+      this.widgets = widgets;
+    })
     this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget', widget._id]);
   }
 }

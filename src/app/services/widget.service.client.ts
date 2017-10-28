@@ -1,5 +1,7 @@
 import {Widget} from '../models/widget.model.client';
 import {Injectable} from '@angular/core';
+import {Http} from "@angular/http";
+import {Response} from "@angular/http";
 
 @Injectable()
 export class WidgetService {
@@ -21,45 +23,49 @@ export class WidgetService {
     'deleteWidget': this.deleteWidget
   };
 
-  createWidget(pageId: String, widget: any) {
+  constructor(private http: Http) {
+  }
+
+  createWidget(pageId: String, widget: Widget) {
+    const url = '/api/page/' + pageId + '/widget';
     widget.pageId = pageId;
     var randomId = Math.floor(Math.random() * 1000000);
     widget._id = randomId.toString();
-    this.widgets.push(widget);
-    return widget;
+    return this.http.post(url, widget)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findWidgetsByPageId(pageId: String) {
-    const widgetsByPage = [];
-    for (let i = 0; i < this.widgets.length; i++) {
-      if (this.widgets[i].pageId === pageId) {
-        widgetsByPage.push(this.widgets[i]);
-      }
-    }
-    return widgetsByPage;
+    const url = '/api/page/' + pageId + '/widget';
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findWidgetById(widgetId: String) {
-    for (let i = 0; i < this.widgets.length; i++) {
-      if (this.widgets[i]._id === widgetId) {
-        return this.widgets[i];
-      }
-    }
+    const url = '/api/widget/' + widgetId;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
-  updateWidget(widgetId: String, widget: any) {
-    for (let i = 0; i < this.widgets.length; i++) {
-      if (this.widgets[i]._id === widgetId) {
-        this.widgets[i] = widget;
-      }
-    }
+  updateWidget(pageId: String, widget: Widget) {
+    const url = '/api/page/' + pageId + '/widget/' + widget._id;
+    return this.http.put(url, widget)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
-  deleteWidget(widgetId: String) {
-    for (let i = 0; i < this.widgets.length; i++) {
-      if (this.widgets[i]._id === widgetId) {
-        return this.widgets.splice(i, 1);
-      }
-    }
+  deleteWidget(pageId: String, widgetId: String) {
+    const url = '/api/page/' + pageId + '/widget/' + widgetId;
+    return this.http.delete(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 }
