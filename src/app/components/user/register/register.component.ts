@@ -31,11 +31,13 @@ export class RegisterComponent implements OnInit {
     this.password = this.registerForm.value.password;
     this.verifyPassword = this.registerForm.value.verifyPassword;
     if (this.password === this.verifyPassword) {
-      const user = this.userService.createUser(
-        new User('0', this.username, this.password, '', '')
-      );
-      this.router.navigate(['/profile', user]);
-
+      this.userService
+        .createUser(new User('0', this.username, this.password, '', ''))
+        .subscribe((user: User) => {
+          if (user) {
+            this.router.navigate(['/profile', user._id]);
+          }
+        });
     } else {
       this.errorFlag = true;
     }
