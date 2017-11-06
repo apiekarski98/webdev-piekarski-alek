@@ -7,8 +7,8 @@
     </div>
 
     <div class="navbar-text pull-right">
-      <a (click)='update(username, firstName, lastName)'
-         [routerLink]="['/profile']"
+      <a (click)='update()'
+         [routerLink]="['/profile', userId]"
          class="navbar-link">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
@@ -18,59 +18,101 @@
 </div>
 
 <div class="container top-margin">
-  <form>
-    <div class="form-group">
-      <label for="username">
-        Username
-      </label>
-      <input [(ngModel)]="username"
-             name="username"
-             placeholder="apiekarski"
-             type="text"
-             id="username"
-             class="form-control"/>
-    </div>
+  <form #f="ngForm">
+    <label>
+      Username
+    </label>
+    <input placeholder={{user.username}}
+           name="username"
+           type="text"
+           class="form-control"
+           ngModel
+           required
+           #username="ngModel"/>
+    <label>
+      Email
+    </label>
+    <input placeholder="Email"
+           name="email"
+           type="text"
+           class="form-control"
+           ngModel
+           required
+           #email="ngModel"/>
+    <label>
+      First Name
+    </label>
+    <input placeholder={{user.firstName}}
+           name="firstName"
+           type="text"
+           class="form-control"
+           ngModel
+           required
+           #firstName="ngModel"/>
+    <label>
+      Last Name
+    </label>
+    <input placeholder={{user.lastName}}
+           name="lastName"
+           type="text"
+           class="form-control"
+           ngModel
+           required
+           #lastName="ngModel"/>
   </form>
+  <!--<form>-->
+  <!--<div class="form-group">-->
+  <!--<label for="username">-->
+  <!--Username-->
+  <!--</label>-->
+  <!--<input [(ngModel)]="username"-->
+  <!--name="username"-->
+  <!--placeholder={{user.username}}-->
+  <!--type="text"-->
+  <!--id="username"-->
+  <!--class="form-control"/>-->
+  <!--</div>-->
+  <!--</form>-->
 
-  <form>
-    <div class="form-group">
-      <label for="email">
-        Email
-      </label>
-      <input placeholder="piekarski.a@husky.neu.edu"
-             type="email"
-             id="email"
-             class="form-control"/>
-    </div>
-  </form>
+  <!--<form>-->
+  <!--<div class="form-group">-->
+  <!--<label for="email">-->
+  <!--Email-->
+  <!--</label>-->
+  <!--<input placeholder="piekarski.a@husky.neu.edu"-->
+  <!--type="email"-->
+  <!--id="email"-->
+  <!--class="form-control"/>-->
+  <!--</div>-->
+  <!--</form>-->
 
-  <form>
-    <div class="form-group">
-      <label for="first-name">
-        First Name
-      </label>
-      <input [(ngModel)]="firstName"
-             name="firstName"
-             placeholder="Alek"
-             type="text"
-             id="first-name"
-             class="form-control"/>
-    </div>
-  </form>
+  <!--<form>-->
+  <!--<div class="form-group">-->
+  <!--<label for="first-name">-->
+  <!--First Name-->
+  <!--</label>-->
+  <!--<input [(ngModel)]="firstName"-->
+  <!--name="firstName"-->
+  <!--placeholder={{user.firstName}}-->
+  <!--type="text"-->
+  <!--id="first-name"-->
+  <!--class="form-control"/>-->
+  <!--</div>-->
+  <!--</form>-->
 
-  <form>
-    <div class="form-group">
-      <label for="last-name">
-        Last Name
-      </label>
-      <input [(ngModel)]="lastName"
-             name="lastName"
-             placeholder="Piekarski"
-             type="text"
-             id="last-name"
-             class="form-control"/>
-    </div>
-  </form>
+  <!--<form>-->
+  <!--<div class="form-group">-->
+  <!--<label for="last-name">-->
+  <!--Last Name-->
+  <!--</label>-->
+  <!--<input [(ngModel)]="lastName"-->
+  <!--name="lastName"-->
+  <!--placeholder={{user.lastName}}-->
+  <!--type="text"-->
+  <!--id="last-name"-->
+  <!--class="form-control"/>-->
+  <!--</div>-->
+  <!--</form>-->
 
   <a class="btn btn-danger btn-block"
      (click)="delete()"
