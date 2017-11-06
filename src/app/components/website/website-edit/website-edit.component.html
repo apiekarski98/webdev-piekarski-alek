@@ -54,19 +54,19 @@
   <div class="row">
 
     <div class="col-md-3 hidden-xs hidden-sm">
-      <div class="container-fluid top-margin">
+      <div class="container-fluid">
         <ul class="list-group">
           <li class="list-group-item active">
             Name
           </li>
-          <div *ngFor="let website of websites">
+          <div *ngFor="let site of websites">
             <li class="list-group-item">
               <div class="row">
                 <div class="col-xs-9">
-                  <a [routerLink]="['/user', developerId, 'website', website._id, 'page']">{{website.name}}</a>
+                  <a [routerLink]="['/user', developerId, 'website', websiteId, 'page']">{{site.name}}</a>
                 </div>
                 <div class="col-xs-3">
-                  <a class="pull-right" [routerLink]="['/user', developerId, 'website', website._id]">
+                  <a class="pull-right" [routerLink]="['/user', developerId, 'website', site._id]">
                     <span class="glyphicon glyphicon-cog"></span>
                   </a>
                 </div>
@@ -85,7 +85,7 @@
           </label>
           <input [(ngModel)]="name"
                  name="name"
-                 placeholder="Facebook"
+                 placeholder={{website.name}}
                  type="text"
                  id="name"
                  class="form-control"/>
@@ -97,11 +97,11 @@
           <label>Description</label>
           <textarea [(ngModel)]="description"
                     name="description"
-                    placeholder="Description"
+                    placeholder={{website.description}}
                     type="text"
                     id="description"
                     rows="3"
-                    class="form-control">Facebook is a website that allows users to post statuses for their friends to see.</textarea>
+                    class="form-control">{{website.description}}</textarea>
         </div>
       </form>
       <a (click)="delete()"
