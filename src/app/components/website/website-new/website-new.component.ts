@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute} from '@angular/router';
 import {Website} from '../../../models/website.model.client';
@@ -13,10 +13,11 @@ export class WebsiteNewComponent implements OnInit {
   name: String;
   developerId: String;
   description: String;
-  websites = [{}];
+  websites: Website[];
 
   constructor(private websiteService: WebsiteService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -25,8 +26,11 @@ export class WebsiteNewComponent implements OnInit {
           this.developerId = params['userId'];
         }
       );
-    this.websiteService.findWebsitesByUser(this.developerId);
+    this.websiteService.findWebsitesByUser(this.developerId).subscribe((websites) => {
+      this.websites = websites;
+    });
   }
+
   create(name: String, description: String) {
     const website: Website = new Website('', name, this.developerId, description);
     this.websiteService.createWebsite(this.developerId, website).subscribe((websites) => {
