@@ -36,7 +36,7 @@ export class UserService {
       });
   }
 
-  findUserById(userId) {
+  findUserById(userId: String) {
     const url = 'http://localhost:3100/api/user/' + userId;
     return this.http.get(url).map((response: Response) => {
       return response.json();
@@ -51,17 +51,20 @@ export class UserService {
     });
   }
 
-  findUserByCredentials(username, password) {
+  findUserByCredentials(username: String, password: String) {
     const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
-    return this.http.get(url).map((response: Response) => {
-      return response.json();
+    return this.http.get(url).map(
+      (response: Response) => {
+      const data = response.json();
+      return data;
     });
   }
 
   updateUser(user: User) {
     const url = 'http://localhost:3100/api/user/' + user._id;
     return this.http.put(url, user)
-      .map((response: Response) => {
+      .map(
+        (response: Response) => {
         return response.json();
       });
   }

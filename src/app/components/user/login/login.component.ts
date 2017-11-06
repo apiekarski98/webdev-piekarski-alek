@@ -25,9 +25,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(username: String, password: String) {
+  login() {
+    this.username = this.loginForm.value.username;
+    this.password = this.loginForm.value.password;
     this.userService
-      .findUserByCredentials(username, password)
+      .findUserByCredentials(this.username, this.password)
       .subscribe((user: User) => {
         if (user) {
           this.router.navigate(['/profile', user._id]);
