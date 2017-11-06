@@ -1,9 +1,9 @@
 // Get the dependencies
 
-var express = require('express');
+const express = require('express');
 const path = require('path');
 const http = require('http');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const app = express();
 
 app.use(bodyParser.json());
@@ -35,18 +35,14 @@ app.set('port', port);
 // Create HTTP server
 const server = http.createServer(app);
 
-var serverSide = require("./server/test-mongodb/app");
+var serverSide = require("./server/app");
 serverSide(app);
 
-
+//require('./todo/app')(app);
 
 // For Build: Catch all other routes and return the index file -- BUILDING
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-
 server.listen( port , () => console.log('Running'));
-
-require("./assignment/app.js")(app);
-app.listen(port, ipaddress);

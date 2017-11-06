@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n", ""]);
+exports.push([module.i, "input {\n  margin-bottom: 5px;\n}\n\n/*\nUsed for space in between the navbar and the container-fluid.\n */\n.top-margin {\n  margin-top: 70px;\n}\n\n/*\n\n */\n.ap-toolbar {\n  position: absolute;\n  right: 0px;\n  background-color: darkgray;\n  padding: 10px;\n  border-bottom-left-radius: 5px;\n  opacity: 0.5;\n}\n", ""]);
 
 // exports
 
