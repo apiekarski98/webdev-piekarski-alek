@@ -13,7 +13,7 @@ export class PageNewComponent implements OnInit {
   websiteId: String;
   name: String;
   description: String;
-  pages = [{}];
+  pages: Page[];
 
   constructor(private pageService: PageService,
               private activatedRoute: ActivatedRoute) {
@@ -27,7 +27,9 @@ export class PageNewComponent implements OnInit {
           this.userId = params['userId'];
         }
       );
-    this.pageService.findPagesByWebsiteId(this.websiteId);
+    this.pageService.findPagesByWebsiteId(this.websiteId).subscribe((pages) => {
+      this.pages = pages;
+    });
   }
 
   create(name: String, description: String) {
