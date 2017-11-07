@@ -2,16 +2,10 @@ module.exports = function (app) {
   var WIDGETS = [
     {"_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
     {"_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-    {
-      "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-      "url": "http://lorempixel.com/400/200/"
-    },
+    {"_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%", "url": "http://lorempixel.com/400/200/"},
     {"_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
     {"_id": "567", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-    {
-      "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-      "url": "https://youtu.be/AM2Ivdi9c4E"
-    },
+    {"_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%", "url": "https://www.youtube.com/embed/AM2Ivdi9c4E"},
     {"_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
   ];
 
@@ -67,14 +61,14 @@ module.exports = function (app) {
     res.json(widgets);
   }
 
-  function getWidgetsForPageId(userId) {
-    var websites = [];
-    for (var i = 0; i < WEBSITES.length; i++) {
-      if (WEBSITES[i].developerId === userId) {
-        websites.push(WEBSITES[i]);
+  function getWidgetsForPageId(pageId) {
+    var widgets = [];
+    for (var i = 0; i < WIDGETS.length; i++) {
+      if (WIDGETS[i].pageId === pageId) {
+        widgets.push(WIDGETS[i]);
       }
     }
-    return websites;
+    return widgets;
   }
 
   function getWidgetById(widgetId) {
