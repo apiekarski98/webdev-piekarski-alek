@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute} from '@angular/router';
 import {Page} from '../../../models/page.model.client';
@@ -10,15 +10,16 @@ import {Page} from '../../../models/page.model.client';
 })
 export class PageEditComponent implements OnInit {
   pageId: String;
-  page: {};
+  page: Page;
   name: String;
   websiteId: String;
   description: String;
   userId: String;
-  pages = [{}];
+  pages: Page[];
 
   constructor(private pageService: PageService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -30,11 +31,15 @@ export class PageEditComponent implements OnInit {
         }
       );
 
-    this.page = this.pageService.findPageById(this.pageId);
+    this.pageService.findPageById(this.pageId).subscribe((page) => {
+      this.page = page;
+    });
+    this.pageService.findPagesByWebsiteId(this.websiteId).subscribe((pages) => {
+      this.pages = pages;
+    });
+    this.websiteId = this.page['websiteId'];
     this.name = this.page['name'];
     this.description = this.page['description'];
-    this.websiteId = this.page['websiteId'];
-    this.pageService.findPagesByWebsiteId(this.websiteId);
   }
 
   update(name: String, description: String) {
