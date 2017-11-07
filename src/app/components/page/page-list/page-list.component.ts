@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute} from '@angular/router';
+import {Page} from "../../../models/page.model.client";
 
 @Component({
   selector: 'app-page-list',
@@ -10,7 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 export class PageListComponent implements OnInit {
   websiteId: String;
   userId: String;
-  pages = [{}];
+  pages: Page[];
 
   constructor(private _pageService: PageService,
               private activatedRoute: ActivatedRoute) {
@@ -24,10 +25,9 @@ export class PageListComponent implements OnInit {
           this.userId = params['userId'];
         }
       );
-    console.log(this.userId)
     this._pageService.findPagesByWebsiteId(this.websiteId).subscribe((pages) => {
       this.pages = pages;
-    })
+    });
   }
 
 }
