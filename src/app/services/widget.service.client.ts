@@ -27,7 +27,7 @@ export class WidgetService {
   }
 
   createWidget(pageId: String, widget: Widget) {
-    const url = '/api/page/' + pageId + '/widget';
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
     widget.pageId = pageId;
     var randomId = Math.floor(Math.random() * 1000000);
     widget._id = randomId.toString();
@@ -38,7 +38,7 @@ export class WidgetService {
   }
 
   findWidgetsByPageId(pageId: String) {
-    const url = '/api/page/' + pageId + '/widget';
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -46,7 +46,7 @@ export class WidgetService {
   }
 
   findWidgetById(widgetId: String) {
-    const url = '/api/widget/' + widgetId;
+    const url = 'http://localhost:3100/api/widget/' + widgetId;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -54,7 +54,7 @@ export class WidgetService {
   }
 
   updateWidget(pageId: String, widget: Widget) {
-    const url = '/api/page/' + pageId + '/widget/' + widget._id;
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget/' + widget._id;
     return this.http.put(url, widget)
       .map((response: Response) => {
         return response.json();
@@ -62,7 +62,7 @@ export class WidgetService {
   }
 
   deleteWidget(pageId: String, widgetId: String) {
-    const url = '/api/page/' + pageId + '/widget/' + widgetId;
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget/' + widgetId;
     return this.http.delete(url)
       .map((response: Response) => {
         return response.json();
