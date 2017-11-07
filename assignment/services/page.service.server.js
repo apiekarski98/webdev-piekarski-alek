@@ -61,7 +61,7 @@ module.exports = function (app) {
 
   function getPagesForWebsiteId(websiteId) {
     var pages = [];
-    for (var i = 0; i < WEBSITES.length; i++) {
+    for (var i = 0; i < PAGES.length; i++) {
       if (PAGES[i].websiteId === websiteId) {
         pages.push(PAGES[i]);
       }
