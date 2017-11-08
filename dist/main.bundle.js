@@ -893,12 +893,18 @@ var RegisterComponent = (function () {
     RegisterComponent.prototype.ngOnInit = function () {
     };
     RegisterComponent.prototype.register = function () {
+        var _this = this;
         this.username = this.registerForm.value.username;
         this.password = this.registerForm.value.password;
         this.verifyPassword = this.registerForm.value.verifyPassword;
         if (this.password === this.verifyPassword) {
-            var user = this.userService.createUser(new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */]('0', this.username, this.password, '', ''));
-            this.router.navigate(['/profile', user]);
+            this.userService
+                .createUser(new __WEBPACK_IMPORTED_MODULE_3__models_user_model_client__["a" /* User */]('0', this.username, this.password, '', ''))
+                .subscribe(function (user) {
+                if (user) {
+                    _this.router.navigate(['/profile', user._id]);
+                }
+            });
         }
         else {
             this.errorFlag = true;
