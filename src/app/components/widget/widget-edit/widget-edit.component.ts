@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {WidgetHeaderComponent} from './widget-header/widget-header.component';
 import {WidgetImageComponent} from "./widget-image/widget-image.component";
 import {WidgetYoutubeComponent} from "./widget-youtube/widget-youtube.component";
+import {Widget} from "../../../models/widget.model.client";
 
 @Component({
   selector: 'app-widget-edit',
@@ -25,7 +26,7 @@ export class WidgetEditComponent implements OnInit {
   widgetId: String;
   widgetType: String;
   pageId: String;
-  widget: {};
+  widget: Widget;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute) {
@@ -41,8 +42,10 @@ export class WidgetEditComponent implements OnInit {
           this.websiteId = params['websiteId'];
         }
       );
-    this.widget = this.widgetService.findWidgetById(this.widgetId);
-    this.widgetType = this.widget['widgetType'];
+    this.widgetService.findWidgetById(this.widgetId).subscribe((widget) => {
+      this.widget = widget;
+      this.widgetType = this.widget['widgetType'];
+    });
   }
 
   update() {

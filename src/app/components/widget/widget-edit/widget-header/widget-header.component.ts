@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute} from '@angular/router';
 import {Widget} from '../../../../models/widget.model.client';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-widget-header',
@@ -9,15 +10,16 @@ import {Widget} from '../../../../models/widget.model.client';
   styleUrls: ['./widget-header.component.css']
 })
 export class WidgetHeaderComponent implements OnInit {
+  @ViewChild('f') headerForm: NgForm;
+
   websiteId: String;
   userId: String;
   widgetId: String;
-  widgetType: String;
   pageId: String;
   size: Number;
   text: String;
   widget: Widget;
-  widgets = [{}];
+  widgets: Widget[];
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute) {
@@ -34,12 +36,22 @@ export class WidgetHeaderComponent implements OnInit {
         }
       );
 
-    this.widgetService.findWidgetById(this.widgetId);
-    this.widgetType = this.widget['widgetType'];
+    this.widgetService.findWidgetById(this.widgetId).subscribe((widget) => {
+      this.widget = widget;
+      this.size = widget['size'];
+      this.text = widget['text'];
+    });
   }
 
   update() {
-    this.widgetService.updateWidget(this.widgetId, this.widget).subscribe((widgets) => {
+    if (this.headerForm.value.text.length > 0) {
+      this.text = this.headerForm.value.text;
+    }
+    if (this.headerForm.value.size.length > 0) {
+      this.size = this.headerForm.value.size;
+    }
+    const newWidget = new Widget(this.widgetId, 'HEADING', this.pageId, this.size, '0', this.text, 'undefined');
+    this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
       this.widgets = widgets;
     });
   }

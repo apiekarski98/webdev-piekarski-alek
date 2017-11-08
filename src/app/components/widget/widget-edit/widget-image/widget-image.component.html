@@ -1,67 +1,53 @@
 <div class="container top-margin">
 
-  <form>
-    <div class="form-group">
-      <label for="name">
-        Name
-      </label>
-      <input placeholder=""
-             type="text"
-             id="name"
-             class="form-control"/>
-    </div>
-  </form>
+  <form #f="ngForm">
 
-  <form>
-    <div class="form-group">
-      <label for="text">
-        Text
-      </label>
-      <input placeholder=""
-             type="text"
-             id="text"
-             class="form-control"/>
-    </div>
-  </form>
+    <label>
+      Name
+    </label>
+    <input placeholder={{widget.widgetType}}
+           type="text"
+           id="name"
+           class="form-control"/>
 
-  <form>
-    <div class="form-group">
-      <label for="url">
-        URL
-      </label>
-      <input [(ngModel)]="widget.url"
-             placeholder="http://lorempixel.com/400/200/sports/1/"
-             type="url"
-             id="url"
-             name="url"
-             class="form-control"/>
-    </div>
-  </form>
+    <label>
+      Text
+    </label>
+    <input [(ngModel)]="widget.text"
+           placeholder=""
+           type="text"
+           ngModel
+           class="form-control"
+           #text="ngModel"/>
 
-  <form>
-    <div class="form-group">
-      <label for="width">
-        Width
-      </label>
-      <input [(ngModel)]="widget.width"
-             placeholder="100%"
-             type="text"
-             id="width"
-             name="width"
-             class="form-control"/>
-    </div>
-  </form>
+    <label>
+      URL
+    </label>
+    <input [(ngModel)]="widget.url"
+           placeholder={{widget.url}}
+           name="url"
+           type="url"
+           ngModel
+           class="form-control"
+           #url="ngModel"/>
 
-  <form>
-    <div class="form-group">
-      <label for="upload">
-        Upload
-      </label>
-      <input placeholder=""
-             type="file"
-             id="upload"
-             class="form-control"/>
-    </div>
+    <label>
+      Width
+    </label>
+    <input [(ngModel)]="widget.width"
+           placeholder={{widget.width}}
+           type="text"
+           name="width"
+           ngModel
+           class="form-control"
+           #width="ngModel"/>
+
+    <label>
+      Upload
+    </label>
+    <input placeholder=""
+           type="file"
+           class="form-control"/>
   </form>
 
   <div class="btn btn-primary btn-block">

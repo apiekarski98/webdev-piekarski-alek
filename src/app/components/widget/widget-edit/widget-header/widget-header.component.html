@@ -1,45 +1,36 @@
 <div class="container top-margin">
 
-  <form>
-    <div class="form-group">
-      <label for="name">
-        Name
-      </label>
-      <input placeholder=""
-             type="text"
-             id="name"
-             class="form-control"/>
-    </div>
+  <form #f="ngForm">
+    <label>
+      Name
+    </label>
+    <input placeholder={{widget.widgetType}}
+           type="text"
+           id="name"
+           class="form-control"/>
+    <label>
+      Text
+    </label>
+    <input [(ngModel)]="widget.text"
+           placeholder={{widget.text}}
+           type="text"
+           name="text"
+           ngModel
+           class="form-control"
+           #text="ngModel"/>
+    <label>
+      Size
+    </label>
+    <input [(ngModel)]="widget.size"
+           placeholder={{widget.size}}
+           type="number"
+           min="0"
+           name="size"
+           ngModel
+           class="form-control"
+           #size="ngModel"/>
   </form>
 
-  <form>
-    <div class="form-group">
-      <label for="text">
-        Text
-      </label>
-      <input [(ngModel)]="widget.text"
-             placeholder="Saudi Education Officials Fired for Publishing Textbook With Photo of King Faisal Next to Yoda"
-             type="text"
-             id="text"
-             name="text"
-             class="form-control"/>
-    </div>
-  </form>
-
-  <form>
-    <div class="form-group">
-      <label for="size">
-        Size
-      </label>
-      <input [(ngModel)]="widget.size"
-             placeholder="3"
-             type="number"
-             min="0"
-             id="size"
-             name="size"
-             class="form-control"/>
-    </div>
-  </form>
   <a (click)="delete()"
      class="btn btn-danger btn-block"
      [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget']">

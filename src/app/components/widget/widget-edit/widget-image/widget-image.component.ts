@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute} from '@angular/router';
 import {Widget} from '../../../../models/widget.model.client';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-widget-image',
@@ -9,13 +10,16 @@ import {Widget} from '../../../../models/widget.model.client';
   styleUrls: ['./widget-image.component.css']
 })
 export class WidgetImageComponent implements OnInit {
+  @ViewChild('f') imageForm: NgForm;
+
   websiteId: String;
   userId: String;
   widgetId: String;
-  widgetType: String;
   pageId: String;
   widget: Widget;
-  widgets: [{}];
+  widgets: Widget[];
+  url: String;
+  width: String;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute) {
@@ -32,12 +36,22 @@ export class WidgetImageComponent implements OnInit {
         }
       );
 
-    this.widgetService.findWidgetById(this.widgetId);
-    this.widgetType = this.widget['widgetType'];
+    this.widgetService.findWidgetById(this.widgetId).subscribe((widget) => {
+      this.widget = widget;
+      this.url = widget.url;
+      this.width = widget.width;
+    });
   }
 
   update() {
-    this.widgetService.updateWidget(this.widgetId, this.widget).subscribe((widgets) => {
+    if (this.imageForm.value.url.length > 0) {
+      this.url = this.imageForm.value.url;
+    }
+    if (this.imageForm.value.width.length > 0) {
+      this.width = this.imageForm.value.width;
+    }
+    const newWidget = new Widget(this.widgetId, 'IMAGE', this.pageId, 0, this.width, 'undefined', this.url);
+    this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
       this.widgets = widgets;
     });
   }
