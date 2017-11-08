@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   username: String;
   firstName: String;
   lastName: String;
-  users= [{}];
+  users: User[];
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute) {
@@ -49,15 +49,15 @@ export class ProfileComponent implements OnInit {
     if (this.profileForm.value.lastName.length > 0) {
       this.lastName = this.profileForm.value.lastName;
     }
-    const tempUser = new User(this.userId, this.username, this.user.password, this.firstName, this.lastName);
-    this.userService.updateUser(tempUser).subscribe((tempUser) => {
-      this.user = tempUser;
+    const newUser = new User(this.userId, this.username, this.user.password, this.firstName, this.lastName);
+    this.userService.updateUser(newUser).subscribe((user) => {
+      this.user = user;
     });
   }
 
   delete() {
     this.userService.deleteUser(this.userId).subscribe((users) => {
-      this.users = this.userService.users;
+      this.users = users;
     });
   }
 }
