@@ -55,9 +55,8 @@ export class UserService {
     const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
     return this.http.get(url).map(
       (response: Response) => {
-      const data = response.json();
-      return data;
-    });
+        return response.json();
+      });
   }
 
   updateUser(user: User) {
@@ -65,8 +64,8 @@ export class UserService {
     return this.http.put(url, user)
       .map(
         (response: Response) => {
-        return response.json();
-      });
+          return response.json();
+        });
   }
 
   deleteUser(userId: String) {
