@@ -19,17 +19,19 @@ module.exports = function (app) {
 
   function deleteUser(req, res) {
     var userId = req.params['userId'];
-    userModel.deleteUser(userId).then(function (status) {
-      res.send(status);
-    });
+    userModel.deleteUser(userId)
+      .then(function (status) {
+        res.send(status);
+      });
   }
 
   function updateUser(req, res) {
     var userId = req.params['userId'];
     var user = req.body;
-    userModel.updateUser(userId, user).then(function (status) {
-      res.send(status);
-    });
+    userModel.updateUser(userId, user)
+      .then(function (status) {
+        res.send(status);
+      });
   }
 
   function createUser(req, res) {
@@ -42,53 +44,43 @@ module.exports = function (app) {
 
   function findUserByUsername(req, res) {
     var username = req.query["username"];
-    if (username) {
-      var user = users.find(function (user) {
-        return user.username === username;
-      });
-
-      if (user) {
+    userModel.findUserByUsername(username)
+      .then(function (user) {
         res.json(user);
-      }
-      return;
-    }
+      });
   }
 
   function findUserByCredentials(req, res) {
     var username = req.query["username"];
     var password = req.query["password"];
-    if (username && password) {
-      var user = users.find(function (user) {
-        return user.username === username && user.password === password;
-      });
-
-      if (user) {
+    userModel.findUserByCredentials(username, password)
+      .then(function (user) {
         res.json(user);
-      }
-      return;
-    }
+      });
   }
 
   function findUserById(req, res) {
     var userId = req.params["userId"];
-    userModel.findUserById(userId).then(function (user) {
-      res.json(user);
-    });
+    userModel.findUserById(userId)
+      .then(function (user) {
+        res.json(user);
+      });
   }
 
   function findUsers(req, res) {
     var username = req.query["username"];
     var password = req.query["password"];
     if (username && password) {
-      var promise = userModel.findUserByCredentials(username, password);
-      promise.then(function (user) {
-        res.json(user);
-      });
+      userModel.findUserByCredentials(username, password)
+        .then(function (user) {
+          res.json(user);
+        });
       return;
     } else if (username) {
-      userModel.findUserByUsername(username).then(function (user) {
-        res.json(user);
-      });
+      userModel.findUserByUsername(username)
+        .then(function (user) {
+          res.json(user);
+        });
       return;
     }
     res.json(users);
