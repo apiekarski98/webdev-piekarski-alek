@@ -17,7 +17,7 @@ function findPagesByWebsiteId(websiteId) {
 
 function createPage(page) {
   var newPage = null;
-  return PageModel.create(newPage).then(function (page) {
+  return PageModel.create(page).then(function (page) {
     newPage = page;
     websiteModel.findWebsiteById(page.websiteId)
       .then(function (website) {
