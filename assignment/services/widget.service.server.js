@@ -1,6 +1,6 @@
 module.exports = function (app) {
-  var widgetModel = require("../model/page/page.model.server");
-  
+  var widgetModel = require("../model/widget/widget.model.server");
+
   app.get("/api/page/:pageId/widget", findWidgetsByPageId);
   app.get("/api/widget/:widgetId", findWidgetById);
   app.post("/api/page/:pageId/widget", createWidget);
@@ -35,6 +35,7 @@ module.exports = function (app) {
   function createWidget(req, res) {
     var pageId = req.params['pageId'];
     var widget = req.body;
+    widget.pageId = pageId;
     delete widget._id;
     widgetModel.createWidget(widget)
       .then(function (widget) {
@@ -47,7 +48,7 @@ module.exports = function (app) {
 
   function findWidgetsByPageId(req, res) {
     var pageId = req.params['pageId'];
-    widgetModel.findPagesByWebsiteId(pageId)
+    widgetModel.findWidgetsByPageId(pageId)
       .then(function (widgets) {
         res.json(widgets);
       });
