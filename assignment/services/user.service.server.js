@@ -1,5 +1,7 @@
 module.exports = function (app) {
 
+  var userModel = require("../model/user/user.model.server");
+
   app.get("/api/user/:userId", findUserById);
   app.get("/api/user", findUsers);
   app.get("/api/user?username=username", findUserByUsername);
@@ -17,31 +19,25 @@ module.exports = function (app) {
 
   function deleteUser(req, res) {
     var userId = req.params['userId'];
-    for (var i = 0; i < users.length; i++) {
-      if (users[i]._id === userId) {
-        users.splice(i, 1);
-        res.json(users);
-        return;
-      }
-    }
+    userModel.deleteUser(userId).then(function (status) {
+      res.send(status);
+    });
   }
 
   function updateUser(req, res) {
     var userId = req.params['userId'];
     var user = req.body;
-    for (var i = 0; i < users.length; i++) {
-      if (users[i]._id === userId) {
-        users[i] = user;
-        res.json(user);
-        return;
-      }
-    }
+    userModel.updateUser(userId, user).then(function (status) {
+      res.send(status);
+    });
   }
 
   function createUser(req, res) {
-    var user = req.body;
-    users.push(user);
-    res.json(user);
+    var newUser = req.body;
+    userModel.createUser(newUser)
+      .then(function (user) {
+        res.json(user);
+      });
   }
 
   function findUserByUsername(req, res) {
@@ -75,34 +71,24 @@ module.exports = function (app) {
 
   function findUserById(req, res) {
     var userId = req.params["userId"];
-    var user = users.find(function (user) {
-      return user._id === userId;
+    userModel.findUserById(userId).then(function (user) {
+      res.json(user);
     });
-    res.json(user);
   }
 
   function findUsers(req, res) {
     var username = req.query["username"];
     var password = req.query["password"];
     if (username && password) {
-      var user = users.find(function (user) {
-        return user.username === username && user.password === password;
-      });
-      if (user) {
+      var promise = userModel.findUserByCredentials(username, password);
+      promise.then(function (user) {
         res.json(user);
-      } else {
-        res.json({});
-      }
+      });
       return;
     } else if (username) {
-      var user = users.find(function (user) {
-        return user.username === username;
-      });
-      if (user) {
+      userModel.findUserByUsername(username).then(function (user) {
         res.json(user);
-      } else {
-        res.json({});
-      }
+      });
       return;
     }
     res.json(users);
