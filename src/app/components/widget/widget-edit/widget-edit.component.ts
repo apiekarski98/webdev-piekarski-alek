@@ -5,6 +5,8 @@ import {WidgetHeaderComponent} from './widget-header/widget-header.component';
 import {WidgetImageComponent} from "./widget-image/widget-image.component";
 import {WidgetYoutubeComponent} from "./widget-youtube/widget-youtube.component";
 import {Widget} from "../../../models/widget.model.client";
+import {WidgetHtmlComponent} from "./widget-html/widget-html.component";
+import {WidgetTextComponent} from "./widget-text/widget-text.component";
 
 @Component({
   selector: 'app-widget-edit',
@@ -20,6 +22,12 @@ export class WidgetEditComponent implements OnInit {
 
   @ViewChild(WidgetYoutubeComponent)
   private widgetYoutubeComponent: WidgetYoutubeComponent;
+
+  @ViewChild(WidgetHtmlComponent)
+  private widgetHtmlComponent: WidgetHtmlComponent;
+
+  @ViewChild(WidgetTextComponent)
+  private widgetTextComponent: WidgetTextComponent;
 
   websiteId: String;
   userId: String;
@@ -58,6 +66,12 @@ export class WidgetEditComponent implements OnInit {
         break;
       case "YOUTUBE":
         this.widgetYoutubeComponent.update();
+        break;
+      case "HTML":
+        this.widgetHtmlComponent.update();
+        break;
+      case "TEXT":
+        this.widgetTextComponent.update();
         break;
     }
   }
