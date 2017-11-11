@@ -1,6 +1,9 @@
 <div class="container top-margin">
 
-  <form #f="ngForm">
+  <form ngNoForm
+        action="http://localhost:3100/api/upload"
+        method="post"
+        enctype="multipart/form-data">
 
     <label>
       Name
@@ -45,7 +48,7 @@
     <label>
       Upload
     </label>
-    <input placeholder=""
+    <input name="myFile"
            type="file"
            class="form-control"/>
   </form>
