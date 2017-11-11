@@ -30,6 +30,8 @@ import {WidgetService} from './services/widget.service.client';
 import {SafePipe} from '../safe-pipe';
 import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 import {QuillEditorModule} from 'ngx-quill-editor';
+import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
+import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import {QuillEditorModule} from 'ngx-quill-editor';
     WidgetImageComponent,
     WidgetYoutubeComponent,
     SafePipe,
-    FlickrImageSearchComponent
+    FlickrImageSearchComponent,
+    WidgetHtmlComponent,
+    WidgetTextComponent
   ],
   imports: [
     BrowserModule,
