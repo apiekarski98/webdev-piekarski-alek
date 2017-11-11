@@ -28,6 +28,7 @@ import { WebsiteService } from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
 import { SafePipe } from '../safe-pipe';
+import { FlickrImageSearchComponent } from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SafePipe } from '../safe-pipe';
     WidgetHeaderComponent,
     WidgetImageComponent,
     WidgetYoutubeComponent,
-    SafePipe
+    SafePipe,
+    FlickrImageSearchComponent
   ],
   imports: [
     BrowserModule,
