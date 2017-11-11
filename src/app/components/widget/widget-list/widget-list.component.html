@@ -42,7 +42,8 @@
         </a>
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </div>
-      <div [ngSwitch]="widget.widgetType">
+      <div [ngSwitch]="widget.widgetType"
+           class="youtube-widget">
         <div *ngSwitchCase="'HEADING'">
           <p>{{widget.text}}</p>
         </div>
