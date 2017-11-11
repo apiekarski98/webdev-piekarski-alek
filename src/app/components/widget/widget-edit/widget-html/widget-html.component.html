@@ -1,3 +1,56 @@
-<p>
-  widget-html works!
-</p>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row">
+
+      <!--Back arrow-->
+      <div class="col-xs-1">
+        <p class="navbar-text pull-left">
+          <a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget']" class="navbar-link">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </p>
+      </div>
+
+      <div class="col-xs-10">
+        <p class="navbar-header">
+          <a class="navbar-brand thick">
+            <b>Edit Widget</b>
+          </a>
+        </p>
+      </div>
+
+      <!--Check mark-->
+      <div class="col-xs-1">
+        <p class="navbar-text pull-right">
+          <a (click)="update()"
+             [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', widgetId]"
+             class="navbar-link">
+            <span class="glyphicon glyphicon-ok"></span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<form #f="ngForm">
+  <label>
+    Name
+  </label>
+  <input placeholder={{widget.widgetType}}
+         type="text"
+         id="name"
+         class="form-control"/>
+  <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+</form>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user', userId]">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

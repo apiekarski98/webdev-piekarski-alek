@@ -61,7 +61,17 @@
           <p>{{widget.text}}</p>
         </div>
         <div *ngSwitchCase="'TEXT'">
-          <p>{{widget.text}}</p>
+          <div *ngIf="widget.formatted">
+            <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+          </div>
+
+          <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
+                 placeholder="{{widget.placeholder}}" class="form-control"/>
+
+          <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
+                    rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                    class="form-control">{{widget.text}}</textarea>
+
         </div>
       </div>
     </div>

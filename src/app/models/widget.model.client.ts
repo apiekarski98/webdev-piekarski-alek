@@ -22,5 +22,8 @@ export class Widget {
     if (widgetType === 'HTML') {
       this.text = text;
     }
+    if (widgetType === 'TEXT') {
+      this.text = text;
+    }
   }
 }
