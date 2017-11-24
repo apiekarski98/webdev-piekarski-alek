@@ -1,13 +1,11 @@
 export class Widget {
-  _id: String;
   widgetType: String;
   pageId: String;
   size: Number;
   width: String;
   text: String;
   url: String;
-  constructor(_id, widgetType, pageId, size, width, text, url) {
-    this._id = _id;
+  constructor(widgetType, pageId, size, width, text, url) {
     this.widgetType = widgetType;
     this.pageId = pageId;
     if (widgetType === 'HEADING') {
