@@ -34,13 +34,14 @@ export class WidgetEditComponent implements OnInit {
   widgetId: String;
   widgetType: String;
   pageId: String;
-  widget: Widget;
+  widget: any;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
+
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
