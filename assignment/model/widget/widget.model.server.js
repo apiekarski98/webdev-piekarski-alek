@@ -12,16 +12,7 @@ WidgetModel.deleteWidget = deleteWidget;
 module.exports = WidgetModel;
 
 function createWidget(widget) {
-  var newWidget = null;
-  return WidgetModel.create(widget)
-    .then(function (widget) {
-      newWidget = widget;
-      pageModel.findPageById(widget.pageId)
-        .then(function (page) {
-          page.widgets.push(newWidget);
-          return page.save();
-        });
-    });
+  return WidgetModel.create(widget);
 }
 
 function findWidgetsByPageId(pageId) {
