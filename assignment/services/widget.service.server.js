@@ -35,18 +35,16 @@ module.exports = function (app) {
       });
   }
 
+
   function createWidget(req, res) {
-    var pageId = req.params['pageId'];
     var widget = req.body;
-    widget.pageId = pageId;
-    delete widget._id;
     widgetModel.createWidget(widget)
       .then(function (widget) {
-        widgetModel.findWidgetsByPageId(pageId)
-          .then(function (widgets) {
-            res.json(widgets);
-          });
+        res.json(widget);
+      }, function (error) {
+        res.sendStatus(400).send(error);
       });
+
   }
 
   function findWidgetsByPageId(req, res) {
