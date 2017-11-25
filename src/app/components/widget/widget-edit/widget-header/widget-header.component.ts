@@ -18,7 +18,7 @@ export class WidgetHeaderComponent implements OnInit {
   pageId: String;
   size: Number;
   text: String;
-  widget: Widget;
+  widget: any;
   widgets: Widget[];
 
   constructor(private widgetService: WidgetService,
@@ -50,8 +50,14 @@ export class WidgetHeaderComponent implements OnInit {
     if (this.headerForm.value.size.length > 0) {
       this.size = this.headerForm.value.size;
     }
-    const newWidget = new Widget(this.widgetId, 'HEADING', this.pageId, this.size, '0', this.text, 'undefined');
-    this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
+
+    var newWidget = {
+      widgetType : 'HEADING',
+      _page : this.pageId,
+      size: this.size,
+      text: this.text
+    };
+    this.widgetService.updateWidget(this.pageId, newWidget).subscribe((widgets) => {
       this.widgets = widgets;
     });
   }
