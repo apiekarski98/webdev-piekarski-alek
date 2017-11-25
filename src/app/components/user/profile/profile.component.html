@@ -23,43 +23,56 @@
     <label>
       Username
     </label>
-    <input placeholder={{user.username}}
+
+    <input placeholder="username"
+           [(ngModel)] = "user.username"
            name="username"
            type="text"
            class="form-control"
-           ngModel
+
            required
-           #username="ngModel"/>
+           />
+
     <label>
       Email
     </label>
     <input placeholder="Email"
            name="email"
+
            type="text"
            class="form-control"
-           ngModel
+
            required
-           #email="ngModel"/>
+            />
+
+
+
     <label>
       First Name
     </label>
-    <input placeholder={{user.firstName}}
+    <input placeholder="first name"
+           [(ngModel)] = "user.firstName"
            name="firstName"
            type="text"
            class="form-control"
-           ngModel
+
            required
-           #firstName="ngModel"/>
+           />
+
+
+
+
     <label>
       Last Name
     </label>
-    <input placeholder={{user.lastName}}
+    <input placeholder="lastName"
+           [(ngModel)] = "user.lastName"
            name="lastName"
            type="text"
            class="form-control"
-           ngModel
+
            required
-           #lastName="ngModel"/>
+           />
   </form>
 
   <a class="btn btn-danger btn-block"
