@@ -52,6 +52,7 @@ export class WidgetHeaderComponent implements OnInit {
     }
 
     var newWidget = {
+      _id: this.widgetId,
       widgetType : 'HEADING',
       _page : this.pageId,
       size: this.size,

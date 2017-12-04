@@ -50,7 +50,15 @@ export class WidgetImageComponent implements OnInit {
     if (this.imageForm.value.width.length > 0) {
       this.width = this.imageForm.value.width;
     }
-    const newWidget = new Widget('IMAGE', this.pageId, 0, this.width, 'undefined', this.url);
+
+    var newWidget = {
+      _id: this.widgetId,
+      widgetType : 'IMAGE',
+      _page : this.pageId,
+      url: this.url,
+      width: this.width
+    };
+
     this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
       this.widgets = widgets;
     });

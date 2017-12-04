@@ -45,7 +45,14 @@ export class WidgetHtmlComponent implements OnInit {
     if (this.htmlForm.value.text.length > 0) {
       this.text = this.htmlForm.value.text;
     }
-    const newWidget = new Widget('HTML', this.pageId, 0, '', this.text, 'undefined');
+
+    var newWidget = {
+      _id: this.widgetId,
+      widgetType : 'HTML',
+      _page : this.pageId,
+      text: this.text
+    };
+
     this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
       this.widgets = widgets;
     });

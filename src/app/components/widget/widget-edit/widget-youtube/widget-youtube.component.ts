@@ -50,7 +50,15 @@ export class WidgetYoutubeComponent implements OnInit {
     if (this.youtubeForm.value.width.length > 0) {
       this.width = this.youtubeForm.value.width;
     }
-    const newWidget = new Widget('YOUTUBE', this.pageId, 0, this.width, 'undefined', this.url);
+
+    var newWidget = {
+      _id: this.widgetId,
+      widgetType : 'YOUTUBE',
+      _page : this.pageId,
+      width: this.width,
+      url: this.url
+    };
+
     this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
       this.widgets = widgets;
     });

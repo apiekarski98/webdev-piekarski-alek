@@ -45,7 +45,14 @@ export class WidgetTextComponent implements OnInit {
     if (this.textForm.value.text.length > 0) {
       this.text = this.textForm.value.text;
     }
-    const newWidget = new Widget('TEXT', this.pageId, 0, '', this.text, 'undefined');
+
+    var newWidget = {
+      _id: this.widgetId,
+      widgetType : 'TEXT',
+      _page : this.pageId,
+      text: this.text
+    };
+
     this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
       this.widgets = widgets;
     });
