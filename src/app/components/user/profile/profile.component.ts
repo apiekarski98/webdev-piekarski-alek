@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../services/user.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../models/user.model.client';
 import {NgForm} from "@angular/forms";
 
@@ -20,7 +20,8 @@ export class ProfileComponent implements OnInit {
   users: User[];
 
   constructor(private userService: UserService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -52,12 +53,14 @@ export class ProfileComponent implements OnInit {
     const newUser = new User(this.userId, this.username, this.user.password, this.firstName, this.lastName);
     this.userService.updateUser(newUser).subscribe((user) => {
       this.user = user;
+      this.router.navigate(['/profile', this.userId]);
     });
   }
 
   delete() {
     this.userService.deleteUser(this.userId).subscribe((users) => {
       this.users = users;
+      this.router.navigate(['/login']);
     });
   }
 }

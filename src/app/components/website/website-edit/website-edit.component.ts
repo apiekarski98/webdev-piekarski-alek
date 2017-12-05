@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Website} from "../../../models/website.model.client";
 
 @Component({
@@ -17,7 +17,8 @@ export class WebsiteEditComponent implements OnInit {
   websites: Website[];
 
   constructor(private websiteService: WebsiteService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -43,12 +44,14 @@ export class WebsiteEditComponent implements OnInit {
     const website = new Website(this.websiteId, name, this.developerId, description);
     this.websiteService.updateWebsite(this.developerId, website).subscribe((websites) => {
       this.websites = websites;
+      this.router.navigate(['/user', this.developerId, 'website']);
     });
   }
 
   delete() {
     this.websiteService.deleteWebsite(this.developerId, this.websiteId).subscribe((websites) => {
       this.websites = websites;
+      this.router.navigate(['/user', this.developerId, 'website']);
     });
   }
 }

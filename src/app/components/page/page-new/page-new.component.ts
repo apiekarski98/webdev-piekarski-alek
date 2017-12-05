@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PageService} from '../../../services/page.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Page} from '../../../models/page.model.client';
 
 @Component({
@@ -16,7 +16,8 @@ export class PageNewComponent implements OnInit {
   pages: Page[];
 
   constructor(private pageService: PageService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -36,6 +37,7 @@ export class PageNewComponent implements OnInit {
     const page = new Page('', name, this.websiteId, description);
     this.pageService.createPage(this.websiteId, page).subscribe((pages) => {
       this.pages = pages;
+      this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page']);
     });
   }
 
