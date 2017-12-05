@@ -1,80 +1,42 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="row">
+<div class="container top-margin">
 
-      <!--Back arrow-->
-      <div class="col-xs-1">
-        <p class="navbar-text pull-left">
-          <a [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget']" class="navbar-link">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-          </a>
-        </p>
-      </div>
-
-      <div class="col-xs-10">
-        <p class="navbar-header">
-          <a class="navbar-brand thick">
-            <b>Edit Widget</b>
-          </a>
-        </p>
-      </div>
-
-      <!--Check mark-->
-      <div class="col-xs-1">
-        <p class="navbar-text pull-right">
-          <a (click)="update()"
-             [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget', widgetId]"
-             class="navbar-link">
-            <span class="glyphicon glyphicon-ok"></span>
-          </a>
-        </p>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<form #f="ngForm">
-  <label>
-    Name
-  </label>
-  <input placeholder={{widget.widgetType}}
-         type="text"
-         id="name"
-         class="form-control"/>
-  <label>
-    Text
-  </label>
-  <input [(ngModel)]="widget.text" class="form-control"/>
-
-  <label>
-    Rows
-  </label>
-  <input [(ngModel)]="widget.rows" class="form-control" type="number"/>
-
-  <label>
-    Placeholder
-  </label>
-  <input [(ngModel)]="widget.placeholder" class="form-control" required/>
-  <div class="input-group">
-    <input type="text"
-           readonly
-           value="Formatted"
+  <form #f="ngForm">
+    <label>
+      Name
+    </label>
+    <input placeholder={{widget.widgetType}}
+           type="text"
+           id="name"
            class="form-control"/>
-    <span class="input-group-addon">
+    <label>
+      Text
+    </label>
+    <input [(ngModel)]="widget.text" class="form-control"/>
+
+    <label>
+      Rows
+    </label>
+    <input [(ngModel)]="widget.rows" class="form-control" type="number"/>
+
+    <label>
+      Placeholder
+    </label>
+    <input [(ngModel)]="widget.placeholder" class="form-control" required/>
+    <div class="input-group">
+      <input type="text"
+             readonly
+             value="Formatted"
+             class="form-control"/>
+      <span class="input-group-addon">
      <input [(ngModel)]="widget.formatted"
             type="checkbox"/>
     </span>
-  </div>
+    </div>
 
-</form>
+  </form>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container-fluid">
-    <p class="navbar-text pull-right">
-      <a [routerLink]="['/user', userId]">
-        <span class="glyphicon glyphicon-user"></span>
-      </a>
-    </p>
-
-  </div>
-</nav>
+  <a (click)="delete()"
+     class="btn btn-danger btn-block">
+    Delete
+  </a>
+</div>
