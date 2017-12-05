@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {WidgetService} from '../../../../services/widget.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Widget} from '../../../../models/widget.model.client';
 import {NgForm} from "@angular/forms";
 
@@ -22,7 +22,8 @@ export class WidgetHeaderComponent implements OnInit {
   widgets: Widget[];
 
   constructor(private widgetService: WidgetService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -60,6 +61,7 @@ export class WidgetHeaderComponent implements OnInit {
     };
     this.widgetService.updateWidget(this.pageId, newWidget).subscribe((widgets) => {
       this.widgets = widgets;
+      this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
     });
   }
 
