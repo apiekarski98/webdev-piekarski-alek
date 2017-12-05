@@ -1,9 +1,6 @@
 <div class="container top-margin">
 
-  <form ngNoForm
-        action="http://localhost:3100/api/upload"
-        method="post"
-        enctype="multipart/form-data">
+  <form #f="ngForm">
 
     <label>
       Name
@@ -11,17 +8,17 @@
     <input placeholder={{widget.widgetType}}
            type="text"
            id="name"
-           class="form-control"/>
+           class="form-control"
+    />
 
     <label>
       Text
     </label>
-    <input [(ngModel)]="widget.text"
-           placeholder=""
+    <input placeholder="Text"
+           name
            type="text"
-           ngModel
            class="form-control"
-           #text="ngModel"/>
+    />
 
     <label>
       URL
@@ -30,9 +27,8 @@
            placeholder={{widget.url}}
            name="url"
            type="url"
-           ngModel
            class="form-control"
-           #url="ngModel"/>
+    />
 
     <label>
       Width
@@ -41,9 +37,8 @@
            placeholder={{widget.width}}
            type="text"
            name="width"
-           ngModel
            class="form-control"
-           #width="ngModel"/>
+    />
 
     <label>
       Upload
