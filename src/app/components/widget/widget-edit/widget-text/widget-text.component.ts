@@ -60,4 +60,11 @@ export class WidgetTextComponent implements OnInit {
     });
   }
 
+  delete() {
+    this.widgetService.deleteWidget(this.pageId, this.widgetId).subscribe((widgets) => {
+      this.widgets = widgets;
+      this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+    });
+  }
+
 }
