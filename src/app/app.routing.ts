@@ -14,12 +14,14 @@ import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.c
 import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-chooser.component';
 import {HomeComponent} from './components/home/home.component';
 import {TestComponent} from './components/test/test.component';
+import {AuthGuard} from './services/auth-guard.service';
 
 const APP_ROUTES: Routes = [
   {path: '', component: HomeComponent},
   {path: 'test', component: TestComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'profile/:userId', component: ProfileComponent},
   {path: 'user/:userId', component: ProfileComponent},
   {path: 'user/:userId/website', component: WebsiteListComponent},
