@@ -32,6 +32,7 @@ import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget
 import {QuillEditorModule} from 'ngx-quill-editor';
 import {WidgetHtmlComponent} from './components/widget/widget-edit/widget-html/widget-html.component';
 import {WidgetTextComponent} from './components/widget/widget-edit/widget-text/widget-text.component';
+import {SharedService} from "./services/shared.service.client";
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import {WidgetTextComponent} from './components/widget/widget-edit/widget-text/w
     UserService,
     WebsiteService,
     PageService,
-    WidgetService
+    WidgetService,
+    SharedService
   ],
   bootstrap: [AppComponent]
 })
