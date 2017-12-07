@@ -3,6 +3,7 @@ import {UserService} from '../../../services/user.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../models/user.model.client';
 import {NgForm} from "@angular/forms";
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-profile',
@@ -19,24 +20,19 @@ export class ProfileComponent implements OnInit {
   lastName: String;
   users: User[];
 
-  constructor(private userService: UserService,
+  constructor(private sharedService: SharedService,
+              private userService: UserService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: any) => {
-      this.userId = params['userId'];
-
-      this.userService
-        .findUserById(this.userId)
-        .subscribe((user: User) => {
-          this.userId = user._id;
-          this.user = user;
-          this.username = user.username;
-          this.firstName = user.firstName;
-          this.lastName = user.lastName;
-        });
+      this.user = this.sharedService.user;
+      this.userId = this.user._id;
+      this.username = this.user.username;
+      this.firstName = this.user.firstName;
+      this.lastName = this.user.lastName;
     });
   }
 
@@ -63,4 +59,13 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/login']);
     });
   }
+
+  logout() {
+    this.userService.logout()
+      .subscribe(
+        (status) => {
+          this.router.navigate(['/login']);
+        });
+  }
+
 }
