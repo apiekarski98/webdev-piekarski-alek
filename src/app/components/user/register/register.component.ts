@@ -3,6 +3,7 @@ import {UserService} from '../../../services/user.service.client';
 import {Router} from '@angular/router';
 import {User} from '../../../models/user.model.client';
 import {NgForm} from '@angular/forms';
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit {
   errorFlag: boolean;
   errorMsg = 'Passwords do not match!';
 
-  constructor(private userService: UserService,
+  constructor(private sharedService: SharedService,
+              private userService: UserService,
               private router: Router) {
 
   }
@@ -31,14 +33,11 @@ export class RegisterComponent implements OnInit {
     this.password = this.registerForm.value.password;
     this.verifyPassword = this.registerForm.value.verifyPassword;
     if (this.password === this.verifyPassword) {
-      this.userService.findUserByUsername(this.username).subscribe((user) => {
-        if (user === null) {
-          const newUser = new User('0', this.username, this.password, '', '');
-          this.userService.createUser(newUser).subscribe((userFromServer) => {
-            this.router.navigate(['/profile', userFromServer._id]);
-          });
-        }
-      });
+      this.userService.register(this.username, this.password)
+        .subscribe((user) => {
+          this.sharedService.user = user;
+          this.router.navigate(['/profile']);
+        });
     } else {
       this.errorFlag = true;
     }
