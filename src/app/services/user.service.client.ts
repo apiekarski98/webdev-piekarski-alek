@@ -58,8 +58,6 @@ export class UserService {
 
   createUser(user: User) {
     const url = 'http://localhost:3100/api/user';
-    var randomId = Math.floor(Math.random() * 1000000);
-    user._id = randomId.toString();
     return this.http.post(url, user)
       .map((response: Response) => {
         return response.json();
