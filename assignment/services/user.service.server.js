@@ -1,6 +1,7 @@
 module.exports = function (app) {
 
   var userModel = require("../model/user/user.model.server");
+  var bcrypt = require("bcrypt-nodejs");
 
   app.get("/api/user/:userId", findUserById);
   app.get("/api/user", findUsers);
@@ -30,8 +31,10 @@ module.exports = function (app) {
   ];
 
   function register(req, res) {
-    var newUser = req.body;
-    userModel.createUser(newUser)
+    var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
+
+    userModel.createUser(user)
       .then(function (user) {
         req.login(user, function (err) {
           res.json(user);
@@ -137,11 +140,11 @@ module.exports = function (app) {
       );
   }
 
-  function localStrategy(usr, pass, done) {
+  function localStrategy(usrn, pass, done) {
     userModel
-      .findUserByCredentials(usr, pass)
+      .findUserByUsername(usrn)
       .then(function (user) {
-        if (user) {
+        if (user && user.username === usrn && bcrypt.compareSync(pass, user.password)) {
           done(null, user);
         } else {
           done(null, false);
