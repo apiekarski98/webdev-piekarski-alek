@@ -20,6 +20,8 @@ export class WidgetImageComponent implements OnInit {
   widgets: Widget[];
   url: String;
   width: String;
+  errorFlag: boolean;
+  error: String;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
@@ -42,28 +44,34 @@ export class WidgetImageComponent implements OnInit {
       this.url = widget.url;
       this.width = widget.width;
     });
+    this.errorFlag = false;
+    this.error = "Please enter a url";
   }
 
   update() {
-    if (this.imageForm.value.url.length > 0) {
-      this.url = this.imageForm.value.url;
-    }
-    if (this.imageForm.value.width.length > 0) {
-      this.width = this.imageForm.value.width;
-    }
+    if (this.url === "") {
+      this.errorFlag = true;
+    } else {
+      if (this.imageForm.value.url.length > 0) {
+        this.url = this.imageForm.value.url;
+      }
+      if (this.imageForm.value.width.length > 0) {
+        this.width = this.imageForm.value.width;
+      }
 
-    var newWidget = {
-      _id: this.widgetId,
-      widgetType : 'IMAGE',
-      _page : this.pageId,
-      url: this.url,
-      width: this.width
-    };
+      var newWidget = {
+        _id: this.widgetId,
+        widgetType: 'IMAGE',
+        _page: this.pageId,
+        url: this.url,
+        width: this.width
+      };
 
-    this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
-      this.widgets = widgets;
-      this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
-    });
+      this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
+        this.widgets = widgets;
+        this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+      });
+    }
   }
 
   delete() {

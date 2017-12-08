@@ -16,6 +16,8 @@ export class PageEditComponent implements OnInit {
   description: String;
   userId: String;
   pages: Page[];
+  errorFlag: boolean;
+  error: String;
 
   constructor(private pageService: PageService,
               private activatedRoute: ActivatedRoute,
@@ -39,16 +41,22 @@ export class PageEditComponent implements OnInit {
       this.pages = pages;
     });
     this.websiteId = this.page['websiteId'];
-    this.name = this.page['name'];
-    this.description = this.page['description'];
+    this.name = this.page.name;
+    this.description = this.page.description;
+    this.errorFlag = false;
+    this.error = "Please enter a page name";
   }
 
   update(name: String, description: String) {
-    const page = new Page(this.pageId, name, this.websiteId, description);
-    this.pageService.updatePage(this.pageId, page).subscribe((pages) => {
-      this.pages = pages;
-      this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page']);
-    });
+    if (name === "") {
+      this.errorFlag = true;
+    } else {
+      const page = new Page(this.pageId, name, this.websiteId, description);
+      this.pageService.updatePage(this.pageId, page).subscribe((pages) => {
+        this.pages = pages;
+        this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page']);
+      });
+    }
   }
 
   delete() {

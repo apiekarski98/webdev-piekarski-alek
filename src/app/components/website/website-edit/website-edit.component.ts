@@ -15,6 +15,8 @@ export class WebsiteEditComponent implements OnInit {
   developerId: String;
   description: String;
   websites: Website[];
+  errorFlag: boolean;
+  error: String;
 
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
@@ -38,14 +40,20 @@ export class WebsiteEditComponent implements OnInit {
     });
     this.name = this.website['name'];
     this.description = this.website['description'];
+    this.errorFlag = false;
+    this.error = "Please enter a website name";
   }
 
   update(name: String, description: String) {
-    const website = new Website(this.websiteId, name, this.developerId, description);
-    this.websiteService.updateWebsite(this.developerId, website).subscribe((websites) => {
-      this.websites = websites;
-      this.router.navigate(['/user', this.developerId, 'website']);
-    });
+    if (name === "") {
+      this.errorFlag = true;
+    } else {
+      const website = new Website(this.websiteId, name, this.developerId, description);
+      this.websiteService.updateWebsite(this.developerId, website).subscribe((websites) => {
+        this.websites = websites;
+        this.router.navigate(['/user', this.developerId, 'website']);
+      });
+    }
   }
 
   delete() {

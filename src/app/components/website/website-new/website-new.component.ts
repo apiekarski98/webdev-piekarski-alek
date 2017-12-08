@@ -15,6 +15,8 @@ export class WebsiteNewComponent implements OnInit {
   developerId: String;
   description: String;
   websites: Website[];
+  errorFlag: boolean;
+  error: String;
 
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
@@ -31,15 +33,19 @@ export class WebsiteNewComponent implements OnInit {
     this.websiteService.findWebsitesByUser(this.developerId).subscribe((websites) => {
       this.websites = websites;
     });
+    this.errorFlag = false;
+    this.error = "Please enter a website name";
   }
 
   create(name: String, description: String) {
-    const website: Website = new Website('', name, this.developerId, description);
-    this.websiteService.createWebsite(this.developerId, website).subscribe((websites) => {
-      this.websites = websites;
-      this.router.navigate(['/user', this.developerId, 'website']);
-    });
-
-
+    if (name === "") {
+      this.errorFlag = true;
+    } else {
+      const website: Website = new Website('', name, this.developerId, description);
+      this.websiteService.createWebsite(this.developerId, website).subscribe((websites) => {
+        this.websites = websites;
+        this.router.navigate(['/user', this.developerId, 'website']);
+      });
+    }
   }
 }

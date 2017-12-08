@@ -19,6 +19,8 @@ export class WidgetTextComponent implements OnInit {
   widget: Widget;
   widgets: Widget[];
   text: String;
+  errorFlag: boolean;
+  error: String;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
@@ -40,24 +42,30 @@ export class WidgetTextComponent implements OnInit {
       this.widget = widget;
       this.text = widget.text;
     });
+    this.errorFlag = false;
+    this.error = "Please enter text";
   }
 
   update() {
-    if (this.textForm.value.text.length > 0) {
-      this.text = this.textForm.value.text;
+    if (this.text === "") {
+      this.errorFlag = true;
+    } else {
+      if (this.textForm.value.text.length > 0) {
+        this.text = this.textForm.value.text;
+      }
+
+      var newWidget = {
+        _id: this.widgetId,
+        widgetType: 'TEXT',
+        _page: this.pageId,
+        text: this.text
+      };
+
+      this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
+        this.widgets = widgets;
+        this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+      });
     }
-
-    var newWidget = {
-      _id: this.widgetId,
-      widgetType : 'TEXT',
-      _page : this.pageId,
-      text: this.text
-    };
-
-    this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
-      this.widgets = widgets;
-      this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
-    });
   }
 
   delete() {

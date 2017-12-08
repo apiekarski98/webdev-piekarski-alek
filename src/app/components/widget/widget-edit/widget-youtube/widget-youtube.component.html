@@ -1,50 +1,55 @@
 <div class="container top-margin">
+  <div class="col-xs-12 col-md-9">
+    <div *ngIf="errorFlag"
+         class="alert alert-danger">
+      {{error}}
+    </div>
 
-  <form #f="ngForm">
-    <label>
-      Name
-    </label>
-    <input placeholder={{widget.widgetType}}
-           type="text"
-           id="name"
-           class="form-control"/>
-    <label>
-      Text
-    </label>
-    <input [(ngModel)]="widget.text"
-           placeholder=""
-           type="text"
-           id="text"
-           ngModel
-           class="form-control"
-           #text="ngModel"/>
-    <label>
-      URL
-    </label>
-    <input [(ngModel)]="widget.url"
-           placeholder={{widget.url}}
-           name="url"
-           type="url"
-           id="url"
-           ngModel
-           class="form-control"
-           #url="ngModel"/>
-    <label>
-      Width
-    </label>
-    <input [(ngModel)]="widget.width"
-           placeholder={{widget.width}}
-           type="text"
-           id="width"
-           name="width"
-           ngModel
-           class="form-control"
-           #width="ngModel"/>
-  </form>
+    <form #f="ngForm">
+      <label>
+        Name
+      </label>
+      <input placeholder={{widget.widgetType}}
+             type="text"
+             id="name"
+             class="form-control"/>
+      <label>
+        Text
+      </label>
+      <input [(ngModel)]="widget.text"
+             placeholder=""
+             type="text"
+             id="text"
+             ngModel
+             class="form-control"
+             #text="ngModel"/>
+      <label>
+        URL
+      </label>
+      <input [(ngModel)]="widget.url"
+             placeholder={{widget.url}}
+             name="url"
+             type="url"
+             id="url"
+             ngModel
+             class="form-control"
+             #url="ngModel"/>
+      <label>
+        Width
+      </label>
+      <input [(ngModel)]="widget.width"
+             placeholder={{widget.width}}
+             type="text"
+             id="width"
+             name="width"
+             ngModel
+             class="form-control"
+             #width="ngModel"/>
+    </form>
 
-  <a (click)="delete()"
-     class="btn btn-danger btn-block"
-     [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget']">
-    Delete
-  </a>
-</div>
+    <a (click)="delete()"
+       class="btn btn-danger btn-block"
+       [routerLink]="['/user', userId, 'website', websiteId, 'page', pageId, 'widget']">
+      Delete
+    </a>
+  </div>

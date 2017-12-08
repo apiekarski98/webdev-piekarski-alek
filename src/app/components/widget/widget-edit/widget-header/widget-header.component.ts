@@ -20,6 +20,8 @@ export class WidgetHeaderComponent implements OnInit {
   text: String;
   widget: any;
   widgets: Widget[];
+  errorFlag: boolean;
+  error: String;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
@@ -42,27 +44,33 @@ export class WidgetHeaderComponent implements OnInit {
       this.size = widget['size'];
       this.text = widget['text'];
     });
+    this.errorFlag = false;
+    this.error = "Please enter widget text";
   }
 
   update() {
-    if (this.headerForm.value.text.length > 0) {
-      this.text = this.headerForm.value.text;
-    }
-    if (this.headerForm.value.size.length > 0) {
-      this.size = this.headerForm.value.size;
-    }
+    if (this.text === "") {
+      this.errorFlag = true;
+    } else {
+      if (this.headerForm.value.text.length > 0) {
+        this.text = this.headerForm.value.text;
+      }
+      if (this.headerForm.value.size.length > 0) {
+        this.size = this.headerForm.value.size;
+      }
 
-    var newWidget = {
-      _id: this.widgetId,
-      widgetType : 'HEADING',
-      _page : this.pageId,
-      size: this.size,
-      text: this.text
-    };
-    this.widgetService.updateWidget(this.pageId, newWidget).subscribe((widgets) => {
-      this.widgets = widgets;
-      this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
-    });
+      var newWidget = {
+        _id: this.widgetId,
+        widgetType: 'HEADING',
+        _page: this.pageId,
+        size: this.size,
+        text: this.text
+      };
+      this.widgetService.updateWidget(this.pageId, newWidget).subscribe((widgets) => {
+        this.widgets = widgets;
+        this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+      });
+    }
   }
 
   delete() {

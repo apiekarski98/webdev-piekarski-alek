@@ -1,4 +1,8 @@
 <div class="container top-margin">
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{error}}
+  </div>
 
   <form #f="ngForm">
     <label>

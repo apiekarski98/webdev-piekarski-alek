@@ -77,6 +77,10 @@
     </div>
 
     <div class="col-xs-12 col-md-9">
+      <div *ngIf="errorFlag"
+           class="alert alert-danger">
+        {{error}}
+      </div>
       <form>
         <div class="form-group">
           <label for="name">

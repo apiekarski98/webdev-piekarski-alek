@@ -62,7 +62,8 @@
             <li class="list-group-item">
               <div class="row">
                 <div class="col-xs-9">
-                  <a [routerLink]="['/user', userId, 'website', websiteId, 'page', page._id, 'widget']">{{page.name}}</a>
+                  <a
+                    [routerLink]="['/user', userId, 'website', websiteId, 'page', page._id, 'widget']">{{page.name}}</a>
                 </div>
                 <div class="col-xs-3">
                   <a class="pull-right" [routerLink]="['/user', userId, 'website', websiteId, 'page', page._id]">
@@ -77,6 +78,10 @@
     </div>
 
     <div class="col-xs-12 col-md-9">
+      <div *ngIf="errorFlag"
+           class="alert alert-danger">
+        {{error}}
+      </div>
       <form>
         <div class="form-group">
           <label for="name">

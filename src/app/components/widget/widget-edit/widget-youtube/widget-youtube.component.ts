@@ -20,6 +20,8 @@ export class WidgetYoutubeComponent implements OnInit {
   widgets: Widget[];
   url: String;
   width: String;
+  errorFlag: boolean;
+  error: String;
 
   constructor(private widgetService: WidgetService,
               private activatedRoute: ActivatedRoute,
@@ -42,28 +44,34 @@ export class WidgetYoutubeComponent implements OnInit {
       this.url = widget.url;
       this.width = widget.width;
     });
+    this.errorFlag = false;
+    this.error = "Please enter a url";
   }
 
   update() {
-    if (this.youtubeForm.value.url.length > 0) {
-      this.url = this.youtubeForm.value.url;
-    }
-    if (this.youtubeForm.value.width.length > 0) {
-      this.width = this.youtubeForm.value.width;
-    }
+    if (this.url === "") {
+      this.errorFlag = true;
+    } else {
+      if (this.youtubeForm.value.url.length > 0) {
+        this.url = this.youtubeForm.value.url;
+      }
+      if (this.youtubeForm.value.width.length > 0) {
+        this.width = this.youtubeForm.value.width;
+      }
 
-    var newWidget = {
-      _id: this.widgetId,
-      widgetType : 'YOUTUBE',
-      _page : this.pageId,
-      width: this.width,
-      url: this.url
-    };
+      var newWidget = {
+        _id: this.widgetId,
+        widgetType: 'YOUTUBE',
+        _page: this.pageId,
+        width: this.width,
+        url: this.url
+      };
 
-    this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
-      this.widgets = widgets;
-      this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
-    });
+      this.widgetService.updateWidget(this.widgetId, newWidget).subscribe((widgets) => {
+        this.widgets = widgets;
+        this.router.navigate(['/user', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+      });
+    }
   }
 
   delete() {
