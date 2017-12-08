@@ -13,9 +13,9 @@
            ngModel
            required
            #username="ngModel"/>
-    <span class="help-block" *ngIf="!username.valid && username.touched">
+    <div class="alert alert-danger" *ngIf="!username.valid && username.touched">
       Please enter username!
-   </span>
+    </div>
     <input placeholder="password"
            name="password"
            type="password"
@@ -23,9 +23,9 @@
            ngModel
            required
            #password="ngModel"/>
-    <span class="help-block" *ngIf="!password.valid && password.touched">
+    <div class="alert alert-danger" *ngIf="!password.valid && password.touched">
       Please enter password!
-    </span>
+    </div>
     <button class="btn btn-primary btn-block"
             type="submit"
             [disabled]="!f.valid">
@@ -34,10 +34,6 @@
     <a [routerLink]="['/register']"
        class="btn btn-success btn-block">
       Register
-    </a>
-    <a href="/facebook/login" class="btn btn-primary btn-block">
-      <span class="fa fa-facebook"></span>
-      Facebook
     </a>
   </form>
 </div>
