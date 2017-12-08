@@ -16,12 +16,18 @@ module.exports = function (app) {
 
   var passport = require('passport');
   var LocalStrategy = require('passport-local').Strategy;
+  var FacebookStrategy = require('passport-facebook').Strategy;
   passport.use(new LocalStrategy(localStrategy));
   passport.serializeUser(serializeUser);
   passport.deserializeUser(deserializeUser);
 
   app.post('/api/login', passport.authenticate('local'), login);
-
+  app.get('/facebook/login', passport.authenticate('facebook', {scope: 'email'}));
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+      successRedirect: '/#/profile',
+      failureRedirect: '/#/login'
+    }));
 
   var users = [
     {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder"},
